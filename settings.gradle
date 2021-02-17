@@ -1,0 +1,3 @@
+rootProject.name = 'MCPkg'
+include 'Core'
+include 'Bukkit'
