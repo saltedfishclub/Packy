@@ -21,6 +21,11 @@ public final class PackageInfo {
     private boolean gpgSigned;
     private String downloadUrl;
 
+    public static PackageInfo parse(String expr) {
+        //// TODO: 2021/2/18
+        return null;
+    }
+
     public String getFullName() {
         return repo + "/" + name;
     }

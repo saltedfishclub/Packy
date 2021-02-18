@@ -1,6 +1,7 @@
 package org.serverct.mcpkg.dsl;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.LinkedList;
@@ -11,6 +12,9 @@ import java.util.Queue;
 public abstract class AbstractCommand {
     private String cmdName;
     private Queue<String> args = new LinkedList<>();
+    @Setter
+    private ScriptEnv environment;
+
 
     public AbstractCommand(String cmd) {
         String[] s = cmd.split("\\.");

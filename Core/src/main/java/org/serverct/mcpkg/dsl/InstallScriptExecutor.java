@@ -2,10 +2,13 @@ package org.serverct.mcpkg.dsl;
 
 import org.jetbrains.annotations.ApiStatus;
 import org.serverct.mcpkg.OperationSession;
-
-import java.util.List;
+import org.serverct.mcpkg.repo.data.remote.PackageScript;
 
 @ApiStatus.AvailableSince("0.1.0")
 public interface InstallScriptExecutor {
-    boolean execute(OperationSession session, List<AbstractCommand> cmds);
+    boolean install(OperationSession session, PackageScript cmds);
+
+    boolean uninstall(OperationSession session, PackageScript cmds);
+
+    boolean preinstall(OperationSession session, PackageScript cmds);
 }

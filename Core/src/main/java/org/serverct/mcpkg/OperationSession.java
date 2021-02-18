@@ -1,11 +1,18 @@
 package org.serverct.mcpkg;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.serverct.mcpkg.command.ISender;
+import org.serverct.mcpkg.repo.data.local.PackageInfo;
+
+import java.util.List;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public final class OperationSession {
-    private ISender sender;
+    private final ISender sender;
+    private final List<PackageInfo> installingPackages;
+    @Setter
+    private OperationSession parent;
 }

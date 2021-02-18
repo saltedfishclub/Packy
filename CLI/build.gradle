@@ -16,6 +16,7 @@ dependencies {
     implementation group: 'org.jline', name: 'jline', version: '3.19.0'
     compile project(":Core")
     compile group: 'com.dieselpoint', name: 'norm', version: '1.0.4'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
 }
 shadowJar{
     manifest{
