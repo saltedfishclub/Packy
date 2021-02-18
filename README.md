@@ -7,4 +7,4 @@
  * 从云端下载*插件包*(也可以是单个插件)
  * 你需要做的全部只是运行一条来自 `MCPkg` 的命令。
 
-[版本命名规范](https://semver.org/lang/zh-CN/)
+[贡献代码指南](./CONTRIBUTING.md)
