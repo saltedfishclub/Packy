@@ -6,18 +6,15 @@ import org.serverct.mcpkg.dsl.InstallScriptExecutor;
 import org.serverct.mcpkg.repo.IRepo;
 import org.serverct.mcpkg.repo.pkg.Installer;
 import org.serverct.mcpkg.repo.pkg.validator.IValidator;
+import org.serverct.mcpkg.util.InstanceFinder;
 
 import java.util.List;
 import java.util.Map;
-import java.util.ServiceLoader;
 import java.util.UUID;
 
-public interface IMCPkg {
-    static IMCPkg getImpl() {
-        for (IMCPkg imcPkg : ServiceLoader.load(IMCPkg.class)) {
-            return imcPkg;
-        }
-        return null;
+public interface MCPkg {
+    static MCPkg getImpl() {
+        return InstanceFinder.findInstance();
     }
 
     I18N getI18N();

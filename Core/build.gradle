@@ -15,6 +15,11 @@ dependencies {
     compileOnly 'org.jetbrains:annotations:20.1.0'
     compile group: 'com.github.kevinsawicki', name: 'http-request', version: '6.0'
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+    // https://mvnrepository.com/artifact/com.google.auto.service/auto-service-annotations
+    compileOnly group: 'com.google.auto.service', name: 'auto-service-annotations', version: '1.0-rc7'
+    annotationProcessor group: 'com.google.auto.service', name: 'auto-service', version: '1.0-rc7'
+    // https://mvnrepository.com/artifact/com.dieselpoint/norm
+    compileOnly group: 'com.dieselpoint', name: 'norm', version: '1.0.4'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
 }
 shadowJar {

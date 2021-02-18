@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
-import org.serverct.mcpkg.IMCPkg;
+import org.serverct.mcpkg.MCPkg;
 import org.serverct.mcpkg.util.StringConsts;
 
 import java.io.File;
@@ -22,6 +22,6 @@ public final class TaskResult {
         if (!succeed) {
             return null;
         }
-        return new File(IMCPkg.getImpl().getCacheDir() + "/" + repo + "/" + packageName + StringConsts.PKG_FILE_EXTENSION_NAME);
+        return new File(MCPkg.getImpl().getCacheDir() + "/" + repo + "/" + packageName + StringConsts.PKG_FILE_EXTENSION_NAME);
     }
 }

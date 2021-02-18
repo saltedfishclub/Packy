@@ -1,13 +1,13 @@
 package org.serverct.mcpkg.dsl;
 
-import lombok.Data;
+import lombok.Getter;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 @ApiStatus.AvailableSince("0.1.0")
-@Data
+@Getter
 public abstract class AbstractCommand {
     private String cmdName;
     private Queue<String> args = new LinkedList<>();

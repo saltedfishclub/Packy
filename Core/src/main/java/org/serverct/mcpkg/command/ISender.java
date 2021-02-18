@@ -9,7 +9,7 @@ import java.util.List;
 public interface ISender {
     void sendPackageList(List<PackageInfo> packages);
 
-    void sendProgressBar(int location);
+    void sendProgressBar(String task, int location);
 
     void sendMessage(String message);
 
