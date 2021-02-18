@@ -23,3 +23,6 @@ Fork ，Commit，Push，PR 一步走，但我们需要先约定好一些东西�
 
 - 版本号命名规范  
   https://semver.org/lang/zh-CN/
+
+- 添加指令时  
+  文件相关的命令请注意做`通配符支持`和`文件ID支持`
