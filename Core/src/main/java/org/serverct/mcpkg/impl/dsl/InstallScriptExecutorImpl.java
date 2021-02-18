@@ -19,7 +19,12 @@ public class InstallScriptExecutorImpl implements InstallScriptExecutor {
             cmd.setEnvironment(env);
             String cachedArgs = Arrays.toString(cmd.getArgs().toArray());
             line++;
-            CommandResult result = cmd.execute();
+            CommandResult result;
+            try {
+                result = cmd.execute();
+            } catch (Exception e) {
+                result = new CommandResult(false, e.getMessage());
+            }
             if (!result.isSucceed()) {
                 session.getSender().sendMessage(MCPkg.getImpl().getI18N().fails.Fail_to_Execute);
                 session.getSender().sendMessage(MCPkg.getImpl().getI18N().fails.Fail_to_Execute_Detail
