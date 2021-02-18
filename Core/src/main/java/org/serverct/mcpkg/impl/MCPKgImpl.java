@@ -1,15 +1,17 @@
 package org.serverct.mcpkg.impl;
 
 import com.google.auto.service.AutoService;
+import lombok.Getter;
 import org.serverct.mcpkg.I18N;
 import org.serverct.mcpkg.MCPkg;
 import org.serverct.mcpkg.OperationSession;
 import org.serverct.mcpkg.command.ICommandProcessor;
-import org.serverct.mcpkg.downloader.IDownloader;
 import org.serverct.mcpkg.dsl.InstallScriptExecutor;
+import org.serverct.mcpkg.impl.downloader.DownloaderImpl;
 import org.serverct.mcpkg.repo.IRepo;
 import org.serverct.mcpkg.repo.pkg.Installer;
 import org.serverct.mcpkg.repo.pkg.validator.IValidator;
+import org.serverct.mcpkg.util.ConfigConsts;
 
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,9 @@ import java.util.UUID;
 
 @AutoService(MCPkg.class)
 public class MCPKgImpl implements MCPkg {
+    @Getter
+    private DownloaderImpl downloader = new DownloaderImpl(Integer.parseInt(ConfigConsts.getConfig(ConfigConsts.DOWNLOAD_THREAD_NUMS)));
+
     public MCPKgImpl() {
         System.out.println("I was initialized!");
     }
@@ -43,11 +48,6 @@ public class MCPKgImpl implements MCPkg {
 
     @Override
     public IValidator getValidator() {
-        return null;
-    }
-
-    @Override
-    public IDownloader getDownloader() {
         return null;
     }
 

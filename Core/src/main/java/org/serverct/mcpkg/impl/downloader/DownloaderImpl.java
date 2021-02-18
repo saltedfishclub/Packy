@@ -47,7 +47,7 @@ public class DownloaderImpl implements IDownloader {
         }
         TaskResult result = new TaskResult(repo, packageName, version, TaskResult.Result.DOWNLOADED);
         try {
-            int status = HttpRequest.get(new URI(pack.getDownloadUrl()).toURL()).receive(result.getFileLocation()).code();
+            int status = HttpRequest.get(new URI(pack.getDownloadUrl()).toURL()).followRedirects(true).receive(result.getFileLocation()).code();
             if (status != 200) {
                 result.setResult(TaskResult.Result.NOT_FOUND);
             }

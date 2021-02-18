@@ -17,7 +17,7 @@ public abstract class PackageScript {
     private String version;
     private List<String> arch;
     @Nullable
-    private List<String> mcver;
+    private Map<String, String> mcver;
     @Nullable
     private List<String> depends;
     @Nullable
