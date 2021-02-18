@@ -39,17 +39,17 @@ public class InstallScriptExecutorImpl implements InstallScriptExecutor {
 
     @Override
     public boolean install(OperationSession session, PackageScript cmds) {
-        return exec(session, cmds, MCPkg.getImpl().getI18N().fails.ScriptExec_Type_Install);
+        return exec(session, cmds, MCPkg.getImpl().getI18N().scriptExecs.ScriptExec_Type_Install);
     }
 
     @Override
     public boolean uninstall(OperationSession session, PackageScript cmds) {
-        return exec(session, cmds, MCPkg.getImpl().getI18N().fails.ScriptExec_Type_Uninstall);
+        return exec(session, cmds, MCPkg.getImpl().getI18N().scriptExecs.ScriptExec_Type_Uninstall);
     }
 
     @Override
     public boolean preinstall(OperationSession session, PackageScript cmds) {
-        return exec(session, cmds, MCPkg.getImpl().getI18N().fails.ScriptExec_Type_PreInstall);
+        return exec(session, cmds, MCPkg.getImpl().getI18N().scriptExecs.ScriptExec_Type_PreInstall);
     }
 
 }

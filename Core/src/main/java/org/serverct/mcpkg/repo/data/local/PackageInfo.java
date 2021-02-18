@@ -26,6 +26,11 @@ public final class PackageInfo {
         return null;
     }
 
+    public static boolean checkCompatibility(PackageInfo info) {
+        //// TODO: 2021/2/18
+        return false;
+    }
+
     public String getFullName() {
         return repo + "/" + name;
     }
