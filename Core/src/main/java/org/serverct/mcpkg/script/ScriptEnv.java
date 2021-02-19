@@ -1,4 +1,4 @@
-package org.serverct.mcpkg.dsl;
+package org.serverct.mcpkg.script;
 
 import org.jetbrains.annotations.ApiStatus;
 import org.serverct.mcpkg.command.ISender;

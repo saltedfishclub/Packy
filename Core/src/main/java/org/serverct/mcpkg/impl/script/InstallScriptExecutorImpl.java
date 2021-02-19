@@ -1,8 +1,8 @@
-package org.serverct.mcpkg.impl.dsl;
+package org.serverct.mcpkg.impl.script;
 
 import org.serverct.mcpkg.OperationSession;
-import org.serverct.mcpkg.dsl.InstallScriptExecutor;
 import org.serverct.mcpkg.repo.data.remote.PackageScript;
+import org.serverct.mcpkg.script.InstallScriptExecutor;
 
 public class InstallScriptExecutorImpl implements InstallScriptExecutor {
 

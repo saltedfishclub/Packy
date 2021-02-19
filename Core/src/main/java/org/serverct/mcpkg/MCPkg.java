@@ -2,10 +2,10 @@ package org.serverct.mcpkg;
 
 import org.serverct.mcpkg.command.ICommandProcessor;
 import org.serverct.mcpkg.downloader.IDownloader;
-import org.serverct.mcpkg.dsl.InstallScriptExecutor;
 import org.serverct.mcpkg.repo.IRepo;
 import org.serverct.mcpkg.repo.pkg.Installer;
 import org.serverct.mcpkg.repo.pkg.validator.IValidator;
+import org.serverct.mcpkg.script.InstallScriptExecutor;
 import org.serverct.mcpkg.util.InstanceFinder;
 
 import java.util.List;

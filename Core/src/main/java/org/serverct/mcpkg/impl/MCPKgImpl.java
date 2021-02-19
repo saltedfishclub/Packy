@@ -6,11 +6,11 @@ import org.serverct.mcpkg.MCPkg;
 import org.serverct.mcpkg.OperationSession;
 import org.serverct.mcpkg.command.ICommandProcessor;
 import org.serverct.mcpkg.downloader.IDownloader;
-import org.serverct.mcpkg.dsl.InstallScriptExecutor;
 import org.serverct.mcpkg.impl.downloader.DownloaderImpl;
 import org.serverct.mcpkg.repo.IRepo;
 import org.serverct.mcpkg.repo.pkg.Installer;
 import org.serverct.mcpkg.repo.pkg.validator.IValidator;
+import org.serverct.mcpkg.script.InstallScriptExecutor;
 import org.serverct.mcpkg.util.ConfigConsts;
 
 import java.util.List;
