@@ -20,11 +20,7 @@ import java.util.UUID;
 @AutoService(MCPkg.class)
 public class MCPKgImpl implements MCPkg {
     private DownloaderImpl downloader;
-
-    public MCPKgImpl() {
-        System.out.println("I was initialized!");
-    }
-
+    
     @Override
     public I18N getI18N() {
         return null;
