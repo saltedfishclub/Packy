@@ -13,7 +13,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     // https://mvnrepository.com/artifact/org.jline/jline
-    implementation group: 'org.jline', name: 'jline', version: '3.19.0'
+    // https://mvnrepository.com/artifact/info.picocli/picocli
     compile project(":Core")
     compile group: 'com.dieselpoint', name: 'norm', version: '1.0.4'
     compile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
@@ -26,4 +26,7 @@ shadowJar{
 
 test {
     useJUnitPlatform()
+}
+compileJava {
+    options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
 }
