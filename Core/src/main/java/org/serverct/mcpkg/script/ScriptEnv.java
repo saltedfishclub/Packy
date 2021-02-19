@@ -13,5 +13,7 @@ import java.util.Map;
 public class ScriptEnv {
     public String rootDir = ".";
     public ISender sender;
+
+    //todo public String mutable packageName;
     public Map<String, File> resources;
 }
