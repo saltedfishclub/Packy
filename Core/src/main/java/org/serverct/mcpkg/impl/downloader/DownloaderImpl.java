@@ -31,7 +31,7 @@ public class DownloaderImpl implements IDownloader {
     public void downloadPackages(Set<PackageInfo> tasks, Consumer<Set<TaskResult>> callback) {
         Collector<TaskResult> collector = new Collector<>(tasks.size(), callback); //Maybe fork-join pool?
         tasks.forEach(e -> {
-            threadPool.submit(new DownloadTask(e, collector));
+            threadPool.submit(new DownloadTask(e, collector, this));
         });
     }
 
