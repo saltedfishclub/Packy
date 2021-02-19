@@ -2,7 +2,6 @@ package org.serverct.mcpkg.repo.data.remote;
 
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
-import org.serverct.mcpkg.dsl.AbstractCommand;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,11 +29,11 @@ public abstract class PackageScript {
     private List<String> install;
     private List<String> uninstall;
 
-    public abstract AbstractCommand getJavaVersion();
+    public abstract String getJavaVersion();
 
-    public abstract List<AbstractCommand> getPreCheck();
+    public abstract String getPreCheck();
 
-    public abstract List<AbstractCommand> getInstall();
+    public abstract String getInstall();
 
-    public abstract List<AbstractCommand> getUninstall();
+    public abstract String getUninstall();
 }
