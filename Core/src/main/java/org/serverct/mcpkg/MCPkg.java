@@ -3,12 +3,13 @@ package org.serverct.mcpkg;
 import org.serverct.mcpkg.command.ICommandProcessor;
 import org.serverct.mcpkg.downloader.IDownloader;
 import org.serverct.mcpkg.repo.IRepo;
+import org.serverct.mcpkg.repo.pkg.IPackageManager;
 import org.serverct.mcpkg.repo.pkg.Installer;
 import org.serverct.mcpkg.repo.pkg.validator.IValidator;
 import org.serverct.mcpkg.script.InstallScriptExecutor;
 import org.serverct.mcpkg.util.InstanceFinder;
+import org.serverct.mcpkg.util.MinecraftUtil;
 
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -31,9 +32,13 @@ public interface MCPkg {
 
     InstallScriptExecutor getScriptExecutor();
 
-    List<IRepo> getRepos();
+    Map<String, IRepo> getRepos();
 
     ICommandProcessor getCommandProcessor();
 
     Map<UUID, OperationSession> getUsingOperationSessionsMap();
+
+    IPackageManager getPackageManager();
+
+    MinecraftUtil getMinecraftUtil();
 }
