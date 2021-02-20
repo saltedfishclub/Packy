@@ -7,4 +7,4 @@
  * 从云端下载*插件包*(也可以是单个插件)
  * 你需要做的全部只是运行一条来自 `MCPkg` 的命令。
 
-[贡献代码指南](./CONTRIBUTING.md)
+[贡献代码指南](./CONTRIBUTING.md) | [加入讨论群组: 991275096](https://jq.qq.com/?_wv=1027&k=wQu1waPr)
