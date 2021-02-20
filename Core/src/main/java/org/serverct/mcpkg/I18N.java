@@ -6,9 +6,7 @@ public class I18N {
     ;
 
     public static class Fails {
-        public String Fail_to_Execute = "&cA exception occurred when executing the following commands:";
-        public String Fail_to_Execute_Detail = " -&8&n %command &c%message";
-        public String Fail_to_Execute_Location = "at line %line, package %package, stage: %type";
+        public String Fail_to_Execute = "&cA exception occurred when executing the %s script";
 
     }
 

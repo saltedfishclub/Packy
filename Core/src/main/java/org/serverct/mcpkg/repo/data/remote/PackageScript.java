@@ -3,6 +3,7 @@ package org.serverct.mcpkg.repo.data.remote;
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,15 +26,11 @@ public abstract class PackageScript {
     @Nullable
     private String javaVersion; //js expr
     private Map<String, PkgAttachment> files;
-    private List<String> preCheck;
-    private List<String> install;
-    private List<String> uninstall;
+    private String preCheck; //file name,should pre-process.
+    private String install;
+    private String uninstall;
 
-    public abstract String getJavaVersion();
+    public abstract void preprocess();
 
-    public abstract String getPreCheck();
-
-    public abstract String getInstall();
-
-    public abstract String getUninstall();
+    public abstract Map<String, File> getCheckedResources();
 }
