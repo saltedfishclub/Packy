@@ -1,4 +1,5 @@
-# MCPkg
+# Packy
+(原名：MCPkg）  
 [ENGLISH HERE](./README_EN.md)  
 强大，灵活的包管理器。  
  * 从可信任的源安装 *一个服务端*
