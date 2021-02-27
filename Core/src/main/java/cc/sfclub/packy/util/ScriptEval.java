@@ -91,7 +91,7 @@ public class ScriptEval {
         }
 
         private boolean checkCommon(String s) {
-            if (!s.startsWith("org.serverct.mcpkg.impl.script.bindings")) {
+            if (!s.startsWith("cc.sfclub.packy.impl.script.bindings")) {
                 return false; //MUST REJECTED OR YOUR SERVER BOOM
             }
             try {
