@@ -68,11 +68,16 @@ public class DownloaderImpl implements IDownloader {
     public void download(String url, Consumer<File> callback) {
         threadPool.submit(() -> {
             File cache = new File(ConfigConsts.getConfig(ConfigConsts.CACHE_DIR), "cache-" + UUID.randomUUID());
-            int code = HttpRequest.get(url).followRedirects(true).receive(cache).code();
-            if (code >= 400) { //error
+            try {
+                int code = HttpRequest.get(url).followRedirects(true).receive(cache).code();
+                if (code >= 400) { //error
+                    callback.accept(null);
+                } else {
+                    callback.accept(cache);
+                }
+            } catch (HttpRequest.HttpRequestException e) {
                 callback.accept(null);
-            } else {
-                callback.accept(cache);
+                e.printStackTrace();
             }
         });
     }

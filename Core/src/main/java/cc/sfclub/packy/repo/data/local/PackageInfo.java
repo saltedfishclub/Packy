@@ -11,9 +11,11 @@ import lombok.Getter;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
+import javax.persistence.Entity;
 import java.util.List;
 import java.util.Locale;
 
+@Entity
 @ApiStatus.AvailableSince("0.1.0")
 @Getter
 @AllArgsConstructor
