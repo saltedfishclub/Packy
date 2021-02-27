@@ -14,9 +14,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public final class OperationSession {
     private final ISender sender;
-    private final List<PackageInfo> installingPackages;
+    private final PackageInfo installingPackage;
     @Getter(AccessLevel.PRIVATE) //Hide getter
     public ScriptEnv scriptEnv;
     @Setter
     private OperationSession parent;
+    private List<OperationSession> child;
 }

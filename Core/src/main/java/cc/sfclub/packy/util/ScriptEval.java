@@ -1,8 +1,9 @@
 package cc.sfclub.packy.util;
 
-import cc.sfclub.packy.script.ScriptEnv;
 import jdk.nashorn.api.scripting.ClassFilter;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.ScriptableObject;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -12,20 +13,11 @@ import java.util.List;
 public class ScriptEval {
     public static final SafeCF SAFE_CLASSFILTER = new SafeCF(null);
     private ScriptEngine scriptEngine = new NashornScriptEngineFactory().getScriptEngine(SAFE_CLASSFILTER);
-    private SafeLevels overridingLevel;
+    private Context context = Context.enter();
+    private ScriptableObject scope = context.initStandardObjects();
 
-    public ScriptEval(ScriptEnv environment) {
-        scriptEngine.put("sender", environment.sender);
-        scriptEngine.put("rootDir", environment.rootDir);
-        scriptEngine.put("resources", environment.resources);
-    }
-
-    public ScriptEval(ScriptEnv environment, SafeLevels overridingLevel) {
-        scriptEngine.put("sender", environment.sender);
-        scriptEngine.put("rootDir", environment.rootDir);
-        scriptEngine.put("resources", environment.resources);
-        this.overridingLevel = overridingLevel;
-        scriptEngine = new NashornScriptEngineFactory().getScriptEngine(new SafeCF(overridingLevel));
+    public ScriptEval() {
+        context.evaluateString(scope, "", "", 1, null);
     }
 
     public Object eval(String strToEval) throws ScriptException {

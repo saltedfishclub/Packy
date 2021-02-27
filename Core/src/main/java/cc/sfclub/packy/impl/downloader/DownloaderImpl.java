@@ -1,6 +1,7 @@
 package cc.sfclub.packy.impl.downloader;
 
 import cc.sfclub.packy.MCPkg;
+import cc.sfclub.packy.OperationSession;
 import cc.sfclub.packy.downloader.IDownloader;
 import cc.sfclub.packy.downloader.TaskResult;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
@@ -31,17 +32,19 @@ public class DownloaderImpl implements IDownloader {
      * @param callback
      */
     @Override
-    public void downloadPackages(Set<PackageInfo> tasks, Consumer<Set<TaskResult>> callback) {
+    public void downloadPackages(OperationSession session, Set<PackageInfo> tasks, Consumer<Set<TaskResult>> callback) {
         Collector<TaskResult> collector = new Collector<>(tasks.size(), callback); //Maybe fork-join pool?
         tasks.forEach(e -> {
-            threadPool.submit(new DownloadTask(e, collector, this));
+            threadPool.submit(new DownloadTask(e, collector, this, session));
         });
     }
 
     @SneakyThrows
     @Override
-    public TaskResult download(String repo, String packageName, @Nullable String version) {
-        PackageInfo pack = PackageInfo.parse(version == null ? repo + "/" + packageName : repo + "/" + packageName + ":" + version);
+    public TaskResult download(OperationSession session, String repo, String packageName, @Nullable String version) {
+        PackageInfo pack = PackageInfo.parse(version == null ? repo + "/" + packageName : repo + "/" + packageName + (version != null ? ":" + version : ""));
+        OperationSession sess = new OperationSession(session.getSender(), pack);
+        sess.setParent(session);
         if (pack == null) {
             return new TaskResult(repo, packageName, version, TaskResult.Result.NOT_FOUND);
         }
@@ -50,15 +53,21 @@ public class DownloaderImpl implements IDownloader {
         }
         TaskResult result = new TaskResult(repo, packageName, version, TaskResult.Result.DOWNLOADED);
         try {
-            int status = HttpRequest.get(new URI(pack.getDownloadUrl()).toURL()).followRedirects(true).receive(result.getFileLocation()).code();
+            int status = HttpRequest.get(new URI(pack.getZipDownloadUrl()).toURL()).followRedirects(true).receive(result.getFileLocation()).code();
             if (status != 200) {
                 result.setResult(TaskResult.Result.NOT_FOUND);
+            }
+            if (pack.getGpgAssignee() != null) {
+                status = HttpRequest.get(new URI(pack.getGpgDownloadUrl()).toURL()).followRedirects(true).receive(pack.getGpgSignLoc()).code();
+                if (status != 200) {
+                    result.setResult(TaskResult.Result.NOT_FOUND);
+                }
             }
         } catch (HttpRequest.HttpRequestException exception) {
             exception.printStackTrace();
             result.setResult(TaskResult.Result.IOEXCEPTION);
         }
-        if (pack.isGpgSigned() && !MCPkg.getImpl().getValidator().isSigned(result.getFileLocation())) {
+        if (pack.getGpgAssignee() != null && result.isSucceed() && !MCPkg.getImpl().getValidator().verify(sess)) {
             result.setResult(TaskResult.Result.FAILED_TO_VERIFY_SIGN);
         }
         return result;

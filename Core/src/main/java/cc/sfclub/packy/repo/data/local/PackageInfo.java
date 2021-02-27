@@ -1,17 +1,16 @@
 package cc.sfclub.packy.repo.data.local;
 
 import cc.sfclub.packy.MCPkg;
-import cc.sfclub.packy.script.ScriptEnv;
-import cc.sfclub.packy.util.SafeLevels;
-import cc.sfclub.packy.util.ScriptEval;
 import cc.sfclub.packy.util.SemVersionRegion;
 import cc.sfclub.packy.util.StringConsts;
+import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
 import javax.persistence.Entity;
+import java.io.File;
 import java.util.List;
 import java.util.Locale;
 
@@ -19,7 +18,8 @@ import java.util.Locale;
 @ApiStatus.AvailableSince("0.1.0")
 @Getter
 @AllArgsConstructor
-public final class PackageInfo {
+public final class PackageInfo implements Cloneable {
+    private transient static final Gson gson = new Gson();
     private String name;
     private String repo;
     private String version;
@@ -30,8 +30,9 @@ public final class PackageInfo {
     private String description;
 
     private long lastUpdated;
-    private boolean gpgSigned;
-    private String downloadUrl;
+    private String gpgAssignee;
+    private String zipDownloadUrl;
+    private String gpgDownloadUrl;
 
     /**
      * Make sure that expr is `repo/name[:ver]`
@@ -75,13 +76,36 @@ public final class PackageInfo {
             }
         }
         if (info.getJavaVersion() != null) {
-            javaver = new ScriptEval(new ScriptEnv(), SafeLevels.HIGH).boolEval(info.getJavaVersion());
+            //todo  javaver = new ScriptEval(new ScriptEnv(), SafeLevels.HIGH).boolEval(info.getJavaVersion());
         }
         arch = info.arch.contains(MCPkg.getImpl().getMinecraftUtil().getArch().toLowerCase(Locale.ROOT));
         return mcver && javaver && arch;
     }
 
+    public File getCacheLoc() {
+        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", MCPkg.getImpl().getCacheDir())
+                .replaceAll("%repo", repo)
+                .replaceAll("%package", name)
+                .replaceAll("%version", version));
+    }
+
+    public File getGpgSignLoc() {
+        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", MCPkg.getImpl().getCacheDir())
+                .replaceAll("%repo", repo)
+                .replaceAll("%package", name)
+                .replaceAll("%version", version + "-gpgsign"));
+    }
+
     public String getFullName() {
         return repo + "/" + name;
+    }
+
+    public String getFullNameWithVersion() {
+        return repo + "/" + name + ":" + version;
+    }
+
+    @Override
+    public PackageInfo clone() {
+        return gson.fromJson(gson.toJson(this), PackageInfo.class);
     }
 }

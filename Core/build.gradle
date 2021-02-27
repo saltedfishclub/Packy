@@ -7,6 +7,9 @@ version '0.1.0'
 
 repositories {
     mavenCentral()
+    maven {
+        url = "https://dl.bintray.com/neuhalje/maven"
+    }
 }
 
 dependencies {
@@ -25,7 +28,7 @@ dependencies {
     compileOnly group: 'org.yaml', name: 'snakeyaml', version: '1.27'
 // https://mvnrepository.com/artifact/org.mozilla/rhino
     compileOnly group: 'org.mozilla', name: 'rhino', version: '1.7.13'
-
+    implementation 'name.neuhalfen.projects.crypto.bouncycastle.openpgp:bouncy-gpg:2.3.0'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
 }
 shadowJar {
