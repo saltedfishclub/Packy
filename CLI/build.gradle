@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'org.serverct.mcpkg'
+group 'cc.sfclub.packy'
 version '0.1.0'
 
 repositories {
@@ -17,10 +17,13 @@ dependencies {
     compile project(":Core")
     compile group: 'com.dieselpoint', name: 'norm', version: '1.0.4'
     compile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
+    // https://mvnrepository.com/artifact/org.mozilla/rhino
+    implementation group: 'org.mozilla', name: 'rhino', version: '1.7.13'
+
 }
 shadowJar{
     manifest{
-        attributes "Main-Class": "org.serverct.mcpkg.CLI"
+        attributes "Main-Class": "cc.sfclub.packy.CLI"
     }
 }
 

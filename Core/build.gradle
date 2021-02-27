@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'org.serverct.mcpkg'
+group 'cc.sfclub.packy'
 version '0.1.0'
 
 repositories {
@@ -21,12 +21,14 @@ dependencies {
     // https://mvnrepository.com/artifact/com.dieselpoint/norm
     compileOnly group: 'com.dieselpoint', name: 'norm', version: '1.0.4'
     compileOnly group: 'org.yaml', name: 'snakeyaml', version: '1.27'
+// https://mvnrepository.com/artifact/org.mozilla/rhino
+    compileOnly group: 'org.mozilla', name: 'rhino', version: '1.7.13'
 
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
 }
 shadowJar {
     manifest {
-        attributes "MCPkg-Core-Version":this.version
+        attributes "Packy-Core-Version":this.version
     }
 }
 test {
