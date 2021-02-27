@@ -4,12 +4,15 @@ import cc.sfclub.packy.MCPkg;
 import cc.sfclub.packy.downloader.IDownloader;
 import cc.sfclub.packy.downloader.TaskResult;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.util.ConfigConsts;
 import com.github.kevinsawicki.http.HttpRequest;
 import lombok.SneakyThrows;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.net.URI;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
@@ -59,5 +62,18 @@ public class DownloaderImpl implements IDownloader {
             result.setResult(TaskResult.Result.FAILED_TO_VERIFY_SIGN);
         }
         return result;
+    }
+
+    @Override
+    public void download(String url, Consumer<File> callback) {
+        threadPool.submit(() -> {
+            File cache = new File(ConfigConsts.getConfig(ConfigConsts.CACHE_DIR), "cache-" + UUID.randomUUID());
+            int code = HttpRequest.get(url).followRedirects(true).receive(cache).code();
+            if (code >= 400) { //error
+                callback.accept(null);
+            } else {
+                callback.accept(cache);
+            }
+        });
     }
 }
