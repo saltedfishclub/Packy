@@ -1,6 +1,6 @@
 package cc.sfclub.packy.downloader;
 
-import cc.sfclub.packy.MCPkg;
+import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.util.StringConsts;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +20,7 @@ public final class TaskResult {
     private Result result;
 
     public File getFileLocation() {
-        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", MCPkg.getImpl().getCacheDir())
+        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", Packy.getImpl().getCacheDir())
                 .replaceAll("%repo", repo)
                 .replaceAll("%package", packageName)
                 .replaceAll("%version", version));

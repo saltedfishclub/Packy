@@ -13,8 +13,8 @@ import cc.sfclub.packy.util.MinecraftUtil;
 import java.util.Map;
 import java.util.UUID;
 
-public interface MCPkg {
-    static MCPkg getImpl() {
+public interface Packy {
+    static Packy getImpl() {
         return InstanceFinder.findInstance();
     }
 

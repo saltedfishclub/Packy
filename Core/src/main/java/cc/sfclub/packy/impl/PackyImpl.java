@@ -1,8 +1,8 @@
 package cc.sfclub.packy.impl;
 
 import cc.sfclub.packy.I18N;
-import cc.sfclub.packy.MCPkg;
 import cc.sfclub.packy.OperationSession;
+import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.command.ICommandProcessor;
 import cc.sfclub.packy.downloader.IDownloader;
 import cc.sfclub.packy.impl.downloader.DownloaderImpl;
@@ -18,11 +18,11 @@ import com.google.auto.service.AutoService;
 import java.util.Map;
 import java.util.UUID;
 
-@AutoService(MCPkg.class)
-public class MCPKgImpl implements MCPkg {
+@AutoService(Packy.class)
+public class PackyImpl implements Packy {
     private DownloaderImpl downloader;
 
-    public MCPKgImpl() {
+    public PackyImpl() {
     }
 
     @Override

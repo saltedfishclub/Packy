@@ -1,15 +1,15 @@
 package cc.sfclub.packy.util;
 
-import cc.sfclub.packy.MCPkg;
+import cc.sfclub.packy.Packy;
 
 import java.util.ServiceLoader;
 
 public class InstanceFinder {
-    private static MCPkg cachedMCPkg;
+    private static Packy cachedMCPkg;
 
-    public synchronized static MCPkg findInstance() {
+    public synchronized static Packy findInstance() {
         if (cachedMCPkg == null) {
-            for (MCPkg mpkg : ServiceLoader.load(MCPkg.class)) {
+            for (Packy mpkg : ServiceLoader.load(Packy.class)) {
                 cachedMCPkg = mpkg;
                 return mpkg;
             }

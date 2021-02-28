@@ -1,6 +1,6 @@
 package cc.sfclub.packy.repo.data.local;
 
-import cc.sfclub.packy.MCPkg;
+import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.util.SemVersionRegion;
 import cc.sfclub.packy.util.StringConsts;
 import com.google.gson.Gson;
@@ -58,11 +58,11 @@ public final class PackageInfo implements Cloneable {
     }
 
     private static PackageInfo fetch(String repo, String name) {
-        PackageInfo i = MCPkg.getImpl().getPackageManager().getPackageInfo(StringConsts.LOCAL_PLUGINS_REPOSITORY, name);
+        PackageInfo i = Packy.getImpl().getPackageManager().getPackageInfo(StringConsts.LOCAL_PLUGINS_REPOSITORY, name);
         if (i != null) {
             return i;
         }
-        return MCPkg.getImpl().getPackageManager().getPackageInfo(repo, name);
+        return Packy.getImpl().getPackageManager().getPackageInfo(repo, name);
     }
 
     public static boolean checkCompatibility(PackageInfo info) {
@@ -71,26 +71,26 @@ public final class PackageInfo implements Cloneable {
         boolean arch = true;
         if (info.getMcVersion() != null) {
             SemVersionRegion region = new SemVersionRegion(info.getMcVersion());
-            if (!region.isInRegion(MCPkg.getImpl().getMinecraftUtil().getMCVer())) {
+            if (!region.isInRegion(Packy.getImpl().getMinecraftUtil().getMCVer())) {
                 mcver = false;
             }
         }
         if (info.getJavaVersion() != null) {
             //todo  javaver = new ScriptEval(new ScriptEnv(), SafeLevels.HIGH).boolEval(info.getJavaVersion());
         }
-        arch = info.arch.contains(MCPkg.getImpl().getMinecraftUtil().getArch().toLowerCase(Locale.ROOT));
+        arch = info.arch.contains(Packy.getImpl().getMinecraftUtil().getArch().toLowerCase(Locale.ROOT));
         return mcver && javaver && arch;
     }
 
     public File getCacheLoc() {
-        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", MCPkg.getImpl().getCacheDir())
+        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", Packy.getImpl().getCacheDir())
                 .replaceAll("%repo", repo)
                 .replaceAll("%package", name)
                 .replaceAll("%version", version));
     }
 
     public File getGpgSignLoc() {
-        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", MCPkg.getImpl().getCacheDir())
+        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", Packy.getImpl().getCacheDir())
                 .replaceAll("%repo", repo)
                 .replaceAll("%package", name)
                 .replaceAll("%version", version + "-gpgsign"));

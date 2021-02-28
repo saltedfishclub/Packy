@@ -1,6 +1,6 @@
 package cc.sfclub.packy.impl.repo;
 
-import cc.sfclub.packy.MCPkg;
+import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.repo.IRepo;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
 import cc.sfclub.packy.util.ConfigConsts;
@@ -41,7 +41,7 @@ public class DefaultRepoImpl implements IRepo {
     public boolean tryRefresh(boolean force) {
         time = System.currentTimeMillis();
         // Download database and close connections
-        MCPkg.getImpl().getDownloader().download(repoUrl, file -> {
+        Packy.getImpl().getDownloader().download(repoUrl, file -> {
             synchronized (lock) {
                 // Close connection
                 db.close();

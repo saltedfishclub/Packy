@@ -1,4 +1,4 @@
-name: MCPkg
+name: Packy
 version: @version@
 main: org.serverct.mcpkg.BukkitAdaptor
 softdepend: [GsonCPFix]

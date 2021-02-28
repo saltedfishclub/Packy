@@ -1,7 +1,7 @@
 package cc.sfclub.packy.impl.script;
 
-import cc.sfclub.packy.MCPkg;
 import cc.sfclub.packy.OperationSession;
+import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.repo.data.remote.PackageScript;
 import cc.sfclub.packy.script.InstallScriptExecutor;
 import cc.sfclub.packy.script.ScriptEnv;
@@ -35,7 +35,7 @@ public class InstallScriptExecutorImpl implements InstallScriptExecutor {
                     }
             }
         } catch (ScriptException e) {
-            session.getSender().sendMessage(String.format(MCPkg.getImpl().getI18N().fails.Fail_to_Execute, stageName));
+            session.getSender().sendMessage(String.format(Packy.getImpl().getI18N().fails.Fail_to_Execute, stageName));
             session.getSender().sendMessage(e.getMessage());
         }
         return false;
@@ -43,17 +43,17 @@ public class InstallScriptExecutorImpl implements InstallScriptExecutor {
 
     @Override
     public boolean install(OperationSession session, PackageScript cmds) {
-        return exec(session, cmds, MCPkg.getImpl().getI18N().scriptExecs.ScriptExec_Type_Install, InstallStage.INSTALL);
+        return exec(session, cmds, Packy.getImpl().getI18N().scriptExecs.ScriptExec_Type_Install, InstallStage.INSTALL);
     }
 
     @Override
     public boolean uninstall(OperationSession session, PackageScript cmds) {
-        return exec(session, cmds, MCPkg.getImpl().getI18N().scriptExecs.ScriptExec_Type_Uninstall, InstallStage.UN_INSTALL);
+        return exec(session, cmds, Packy.getImpl().getI18N().scriptExecs.ScriptExec_Type_Uninstall, InstallStage.UN_INSTALL);
     }
 
     @Override
     public boolean preinstall(OperationSession session, PackageScript cmds) {
-        return exec(session, cmds, MCPkg.getImpl().getI18N().scriptExecs.ScriptExec_Type_PreInstall, InstallStage.PRE_INSTALL);
+        return exec(session, cmds, Packy.getImpl().getI18N().scriptExecs.ScriptExec_Type_PreInstall, InstallStage.PRE_INSTALL);
     }
 
 }
