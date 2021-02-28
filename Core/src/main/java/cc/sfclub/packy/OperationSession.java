@@ -13,11 +13,18 @@ import java.util.List;
 @Getter
 @RequiredArgsConstructor
 public final class OperationSession {
-    private final ISender sender;
-    private final PackageInfo installingPackage;
+    private final ISender sender;   //todo 结果反馈给谁?
+    private final PackageInfo installingPackage; //todo 这次会话安装的内容
     @Getter(AccessLevel.PRIVATE) //Hide getter
-    public ScriptEnv scriptEnv;
+    public ScriptEnv scriptEnv;  //todo 脚本运行时候的环境？
     @Setter
-    private OperationSession parent;
-    private List<OperationSession> child;
+    private OperationSession parent; //todo 这个Session派生何处？
+    private List<OperationSession> child; //这个Session派生了哪些？
+
+    public OperationSession fork(PackageInfo info) {
+        OperationSession session = new OperationSession(sender, info);
+        session.parent = this;
+        child.add(session);
+        return session;
+    }
 }
