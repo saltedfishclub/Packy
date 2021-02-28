@@ -7,6 +7,13 @@ import java.util.List;
 
 @ApiStatus.AvailableSince("0.1.0")
 public interface ISender {
+    /**
+     * PLayer offline etc.
+     *
+     * @return if available
+     */
+    boolean isAvailable();
+
     void sendPackageList(List<PackageInfo> packages);
 
     void sendProgressBar(String task, int location);
