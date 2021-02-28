@@ -57,12 +57,12 @@ public final class PackageInfo implements Cloneable {
         return null;
     }
 
-    private static PackageInfo fetch(String repo, String name) {
-        PackageInfo i = Packy.getImpl().getPackageManager().getPackageInfo(StringConsts.LOCAL_PLUGINS_REPOSITORY, name);
+    private static PackageInfo fetch(String repo, String name, @Nullable String version) {
+        PackageInfo i = Packy.getImpl().getPackageManager().getPackageInfo(StringConsts.LOCAL_PLUGINS_REPOSITORY, name, version);
         if (i != null) {
             return i;
         }
-        return Packy.getImpl().getPackageManager().getPackageInfo(repo, name);
+        return Packy.getImpl().getPackageManager().getPackageInfo(repo, name, version);
     }
 
     public static boolean checkCompatibility(PackageInfo info) {

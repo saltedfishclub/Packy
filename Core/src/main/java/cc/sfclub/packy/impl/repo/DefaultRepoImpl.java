@@ -6,6 +6,7 @@ import cc.sfclub.packy.repo.data.local.PackageInfo;
 import cc.sfclub.packy.util.ConfigConsts;
 import com.dieselpoint.norm.Database;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +36,11 @@ public class DefaultRepoImpl implements IRepo {
             return db.where("name GLOB ? OR description GLOB ?", keywords, keywords)
                     .results(PackageInfo.class);
         }
+    }
+
+    @Override
+    public PackageInfo getPackage(String name, @Nullable String version) {
+        return db.where("name = ? AND version = ?", name, (version == null ? "*" : version)).first(PackageInfo.class);
     }
 
     @Override
