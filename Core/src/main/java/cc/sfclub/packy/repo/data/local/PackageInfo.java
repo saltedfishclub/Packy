@@ -42,21 +42,27 @@ public final class PackageInfo implements Cloneable {
      */
     @Nullable
     public static PackageInfo parse(String expr) {
-        String[] s = expr.split("/");
+        String[] s = expr.split("/"); //plugins/WorldEdit:2.0
         if (s.length != 2) {
             return null;
         }
-        String repo = s[0];
-        String name = s[1];
-        String[] s2 = name.split(":");
+        String repo = s[0]; //plugins
+        String name = s[1]; //WorldEdit:2.0
+        String[] s2 = name.split(":"); //WorldEdit,2.0
         if (s2.length == 2) {
-            SemVersionRegion region = new SemVersionRegion(s2[2]);
-            PackageInfo info = fetch(repo, name);
+            SemVersionRegion region = new SemVersionRegion(s2[1]);
+            PackageInfo info = fetch(repo, s2[0], null);
             return region.isInRegion(info.version) ? info : null;
         }
-        return null;
+        return fetch(repo, name, null);
     }
 
+    /**
+     * @param repo
+     * @param name
+     * @param version nullable when specified ANY version
+     * @return
+     */
     private static PackageInfo fetch(String repo, String name, @Nullable String version) {
         PackageInfo i = Packy.getImpl().getPackageManager().getPackageInfo(StringConsts.LOCAL_PLUGINS_REPOSITORY, name, version);
         if (i != null) {
