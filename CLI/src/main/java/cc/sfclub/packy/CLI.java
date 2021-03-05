@@ -1,6 +1,7 @@
 package cc.sfclub.packy;
 
 import cc.sfclub.packy.script.ScriptEnv;
+import cc.sfclub.packy.util.SafeLevels;
 import cc.sfclub.packy.util.ScriptEval;
 
 import java.nio.file.Files;
@@ -19,6 +20,6 @@ public class CLI {
             System.err.println("arg: <js file>");
             return;
         }
-        new ScriptEval(new ScriptEnv()).eval(Files.lines(Paths.get(args[0])).collect(Collectors.joining()));
+        new ScriptEval(new ScriptEnv(), SafeLevels.HIGH).eval(Files.lines(Paths.get(args[0])).collect(Collectors.joining()));
     }
 }

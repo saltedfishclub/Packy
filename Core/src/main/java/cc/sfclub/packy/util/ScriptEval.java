@@ -15,6 +15,17 @@ public class ScriptEval {
     public static final SafeCF SAFE_CLASSFILTER = new SafeCF(null);
     private ScriptEngine scriptEngine = new NashornScriptEngineFactory().getScriptEngine(SAFE_CLASSFILTER);
 
+    public ScriptEval(ScriptEnv scriptEnv, SafeLevels high) {
+        Bindings bindings = scriptEngine.createBindings();
+        bindings.put("rootDir", scriptEnv.rootDir);
+        bindings.put("resources", scriptEnv.resources);
+        bindings.put("sender", scriptEnv.sender);
+        scriptEngine.setBindings(bindings, ScriptContext.ENGINE_SCOPE);
+        if (high != null) {
+            scriptEngine = new NashornScriptEngineFactory().getScriptEngine(new SafeCF(high));
+        }
+    }
+
     public ScriptEval(ScriptEnv scriptEnv) {
         Bindings bindings = scriptEngine.createBindings();
         bindings.put("rootDir", scriptEnv.rootDir);

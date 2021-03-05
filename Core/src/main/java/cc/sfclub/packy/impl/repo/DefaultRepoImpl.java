@@ -27,7 +27,9 @@ public class DefaultRepoImpl implements IRepo {
     }
 
     private final File getDbLocation() {
-        return new File(ConfigConsts.getConfig(ConfigConsts.HOME_DIR), "repo/" + name + ".db"); //todo init folder
+        File file = new File(ConfigConsts.getConfig(ConfigConsts.HOME_DIR), "repo/" + name + ".db");
+        file.getParentFile().mkdirs();
+        return file;
     }
 
     @Override

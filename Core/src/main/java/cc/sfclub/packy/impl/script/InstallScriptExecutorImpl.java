@@ -5,6 +5,7 @@ import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.repo.data.remote.PackageScript;
 import cc.sfclub.packy.script.InstallScriptExecutor;
 import cc.sfclub.packy.script.ScriptEnv;
+import cc.sfclub.packy.util.SafeLevels;
 import cc.sfclub.packy.util.ScriptEval;
 
 import javax.script.ScriptException;
@@ -17,19 +18,19 @@ public class InstallScriptExecutorImpl implements InstallScriptExecutor {
         try {
             switch (stage) {
                 case INSTALL:
-                    Object o = new ScriptEval(scriptEnv).eval(cmds.getInstall());
+                    Object o = new ScriptEval(scriptEnv, SafeLevels.HIGH).eval(cmds.getInstall()); //todo customize
                     if (o instanceof Boolean) {
                         return (boolean) o;
                     }
                     break;
                 case UN_INSTALL:
-                    Object a = new ScriptEval(scriptEnv).eval(cmds.getUninstall());
+                    Object a = new ScriptEval(scriptEnv, SafeLevels.HIGH).eval(cmds.getUninstall());
                     if (a instanceof Boolean) {
                         return (boolean) a;
                     }
                     break;
                 case PRE_INSTALL:
-                    Object z = new ScriptEval(scriptEnv).eval(cmds.getPreCheck());
+                    Object z = new ScriptEval(scriptEnv, SafeLevels.HIGH).eval(cmds.getPreCheck());
                     if (z instanceof Boolean) {
                         return (boolean) z;
                     }

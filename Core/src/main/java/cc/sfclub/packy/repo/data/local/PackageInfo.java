@@ -1,6 +1,9 @@
 package cc.sfclub.packy.repo.data.local;
 
 import cc.sfclub.packy.Packy;
+import cc.sfclub.packy.script.ScriptEnv;
+import cc.sfclub.packy.util.SafeLevels;
+import cc.sfclub.packy.util.ScriptEval;
 import cc.sfclub.packy.util.SemVersionRegion;
 import cc.sfclub.packy.util.StringConsts;
 import com.google.gson.Gson;
@@ -82,7 +85,7 @@ public final class PackageInfo implements Cloneable {
             }
         }
         if (info.getJavaVersion() != null) {
-            //todo  javaver = new ScriptEval(new ScriptEnv(), SafeLevels.HIGH).boolEval(info.getJavaVersion());
+            javaver = new ScriptEval(new ScriptEnv(), SafeLevels.HIGH).boolEval(info.getJavaVersion());
         }
         arch = info.arch.contains(Packy.getImpl().getMinecraftUtil().getArch().toLowerCase(Locale.ROOT));
         return mcver && javaver && arch;
