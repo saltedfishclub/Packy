@@ -1,10 +1,11 @@
 package cc.sfclub.packy.util;
 
+import cc.sfclub.packy.script.ScriptEnv;
 import jdk.nashorn.api.scripting.ClassFilter;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.ScriptableObject;
 
+import javax.script.Bindings;
+import javax.script.ScriptContext;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import java.util.Arrays;
@@ -13,11 +14,13 @@ import java.util.List;
 public class ScriptEval {
     public static final SafeCF SAFE_CLASSFILTER = new SafeCF(null);
     private ScriptEngine scriptEngine = new NashornScriptEngineFactory().getScriptEngine(SAFE_CLASSFILTER);
-    private Context context = Context.enter();
-    private ScriptableObject scope = context.initStandardObjects();
 
-    public ScriptEval() {
-        context.evaluateString(scope, "", "", 1, null);
+    public ScriptEval(ScriptEnv scriptEnv) {
+        Bindings bindings = scriptEngine.createBindings();
+        bindings.put("rootDir", scriptEnv.rootDir);
+        bindings.put("resources", scriptEnv.resources);
+        bindings.put("sender", scriptEnv.sender);
+        scriptEngine.setBindings(bindings, ScriptContext.ENGINE_SCOPE);
     }
 
     public Object eval(String strToEval) throws ScriptException {
