@@ -1,7 +1,7 @@
 package cc.sfclub.packy;
 
-import cc.sfclub.packy.command.ISender;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.session.ISender;
 
 import java.util.List;
 import java.util.Scanner;

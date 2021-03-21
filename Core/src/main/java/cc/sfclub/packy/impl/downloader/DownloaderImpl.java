@@ -1,10 +1,10 @@
 package cc.sfclub.packy.impl.downloader;
 
-import cc.sfclub.packy.OperationSession;
 import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.downloader.IDownloader;
 import cc.sfclub.packy.downloader.TaskResult;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.session.OperationSession;
 import cc.sfclub.packy.util.ConfigConsts;
 import com.github.kevinsawicki.http.HttpRequest;
 import lombok.SneakyThrows;

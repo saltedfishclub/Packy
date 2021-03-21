@@ -1,10 +1,10 @@
 package cc.sfclub.packy.impl.script;
 
-import cc.sfclub.packy.OperationSession;
 import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.repo.data.remote.PackageScript;
 import cc.sfclub.packy.script.InstallScriptExecutor;
 import cc.sfclub.packy.script.ScriptEnv;
+import cc.sfclub.packy.session.OperationSession;
 import cc.sfclub.packy.util.SafeLevels;
 import cc.sfclub.packy.util.ScriptEval;
 

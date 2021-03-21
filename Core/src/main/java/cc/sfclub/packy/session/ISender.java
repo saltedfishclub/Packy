@@ -1,4 +1,4 @@
-package cc.sfclub.packy.command;
+package cc.sfclub.packy.session;
 
 import cc.sfclub.packy.repo.data.local.PackageInfo;
 import org.jetbrains.annotations.ApiStatus;

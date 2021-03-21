@@ -1,6 +1,5 @@
-package cc.sfclub.packy;
+package cc.sfclub.packy.session;
 
-import cc.sfclub.packy.command.ISender;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
 import cc.sfclub.packy.script.ScriptEnv;
 import lombok.AccessLevel;

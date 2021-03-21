@@ -1,10 +1,11 @@
 package cc.sfclub.packy.impl.repo.pkg;
 
-import cc.sfclub.packy.OperationSession;
 import cc.sfclub.packy.provider.IRepoProvider;
 import cc.sfclub.packy.repo.IRepo;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
 import cc.sfclub.packy.repo.pkg.IPackageManager;
+import cc.sfclub.packy.session.OperationSession;
+import com.dieselpoint.norm.Database;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.ServiceLoader;
 public class PackageManagerImpl implements IPackageManager {
     private List<IRepoProvider> providers = new ArrayList<>();
     private List<IRepo> repos = new ArrayList<>();
+    private Database localDb;
 
     public void initProviders() {
         ServiceLoader.load(IRepoProvider.class).forEach(providers::add);
@@ -38,8 +40,14 @@ public class PackageManagerImpl implements IPackageManager {
 
     @Override
     public boolean removePackage(String pkgName) {
-        //todo
-        return false;
+        List<PackageInfo> infos = searchPackages(pkgName);
+        if (!infos.stream().allMatch(PackageInfo::isLocal)) {
+            return false;
+        }
+        infos.forEach(e -> {
+            //todo
+        });
+        return true;
     }
 
     @Override
@@ -58,7 +66,7 @@ public class PackageManagerImpl implements IPackageManager {
     }
 
     @Override
-    public List<String> getPkgTrackingFiles(PackageInfo pkg) {
+    public List<String> getTrackingFiles(PackageInfo pkg) {
         return null;
     }
 }

@@ -1,7 +1,7 @@
 package cc.sfclub.packy.repo.pkg;
 
-import cc.sfclub.packy.OperationSession;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.session.OperationSession;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,6 +23,6 @@ public interface IPackageManager {
 
     List<PackageInfo> getInstalledPackages();
 
-    List<String> getPkgTrackingFiles(PackageInfo pkg);
+    List<String> getTrackingFiles(PackageInfo pkg);
 
 }

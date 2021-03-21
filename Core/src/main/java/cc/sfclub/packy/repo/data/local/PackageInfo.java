@@ -59,7 +59,6 @@ public final class PackageInfo implements Cloneable {
         }
         return fetch(repo, name, null);
     }
-
     /**
      * @param repo
      * @param name

@@ -1,8 +1,8 @@
 package cc.sfclub.packy.impl.repo.pkg.validator;
 
-import cc.sfclub.packy.OperationSession;
 import cc.sfclub.packy.impl.security.KeyringManager;
 import cc.sfclub.packy.repo.pkg.validator.IValidator;
+import cc.sfclub.packy.session.OperationSession;
 import com.google.auto.service.AutoService;
 
 @AutoService(IValidator.class)

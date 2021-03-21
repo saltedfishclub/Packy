@@ -1,7 +1,7 @@
 package cc.sfclub.packy.impl;
 
-import cc.sfclub.packy.command.IFallbackSender;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.session.IFallbackSender;
 import com.google.auto.service.AutoService;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package cc.sfclub.packy.impl.security;
 
-import cc.sfclub.packy.OperationSession;
+import cc.sfclub.packy.session.OperationSession;
 import cc.sfclub.packy.util.Hash;
 import lombok.SneakyThrows;
 import name.neuhalfen.projects.crypto.bouncycastle.openpgp.BouncyGPG;
@@ -54,7 +54,7 @@ public class KeyringManager {
             byte[] buffer = new byte[4096];
             int n;
             while ((n = is.read(buffer)) != -1) {
-            } //todo
+            }
             String str = new String(buffer);
             String[] s2 = str.split("\n");
             if (s2.length != 2) {

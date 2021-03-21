@@ -1,6 +1,6 @@
 package cc.sfclub.packy.script;
 
-import cc.sfclub.packy.command.ISender;
+import cc.sfclub.packy.session.ISender;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.io.File;

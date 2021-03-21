@@ -1,7 +1,7 @@
 package cc.sfclub.packy.downloader;
 
-import cc.sfclub.packy.OperationSession;
 import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.session.OperationSession;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.io.File;
