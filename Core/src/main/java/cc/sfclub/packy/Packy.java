@@ -6,7 +6,6 @@ import cc.sfclub.packy.repo.pkg.IPackageManager;
 import cc.sfclub.packy.repo.pkg.Installer;
 import cc.sfclub.packy.repo.pkg.validator.IValidator;
 import cc.sfclub.packy.script.InstallScriptExecutor;
-import cc.sfclub.packy.session.ICommandProcessor;
 import cc.sfclub.packy.session.OperationSession;
 import cc.sfclub.packy.util.InstanceFinder;
 import cc.sfclub.packy.util.MinecraftUtil;
@@ -34,8 +33,6 @@ public interface Packy {
     InstallScriptExecutor getScriptExecutor();
 
     Map<String, IRepo> getRepos();
-
-    ICommandProcessor getCommandProcessor();
 
     Map<UUID, OperationSession> getUsingOperationSessionsMap();
 
