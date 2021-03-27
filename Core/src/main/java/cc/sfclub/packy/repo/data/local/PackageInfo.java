@@ -4,8 +4,8 @@ import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.script.ScriptEnv;
 import cc.sfclub.packy.util.SafeLevels;
 import cc.sfclub.packy.util.ScriptEval;
-import cc.sfclub.packy.util.SemVersionRegion;
 import cc.sfclub.packy.util.StringConsts;
+import com.github.zafarkhaja.semver.Version;
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -53,9 +53,11 @@ public final class PackageInfo implements Cloneable {
         String name = s[1]; //WorldEdit:2.0
         String[] s2 = name.split(":"); //WorldEdit,2.0
         if (s2.length == 2) {
-            SemVersionRegion region = new SemVersionRegion(s2[1]);
+            //SemVersionRegion region = new SemVersionRegion(s2[1]);
+            Version version = Version.valueOf(s2[1]);
             PackageInfo info = fetch(repo, s2[0], null);
-            return region.isInRegion(info.version) ? info : null;
+            //return region.isInRegion(info.version) ? info : null;
+            return version.satisfies(info.version) ? info : null;
         }
         return fetch(repo, name, null);
     }
@@ -78,8 +80,8 @@ public final class PackageInfo implements Cloneable {
         boolean javaver = true;
         boolean arch = true;
         if (info.getMcVersion() != null) {
-            SemVersionRegion region = new SemVersionRegion(info.getMcVersion());
-            if (!region.isInRegion(Packy.getImpl().getMinecraftUtil().getMCVer())) {
+            Version version = Version.valueOf(info.getMcVersion());
+            if (version.satisfies(Packy.getImpl().getMinecraftUtil().getMCVer())) {
                 mcver = false;
             }
         }
