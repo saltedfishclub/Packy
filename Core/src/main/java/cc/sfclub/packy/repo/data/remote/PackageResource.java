@@ -1,6 +1,8 @@
 package cc.sfclub.packy.repo.data.remote;
 
-public class PkgAttachment {
-    public String source;
+import java.io.File;
+
+public class PackageResource {
+    public File source;
     public String checksum; //md5
 }

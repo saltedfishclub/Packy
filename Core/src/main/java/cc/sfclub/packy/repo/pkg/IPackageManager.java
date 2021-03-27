@@ -1,6 +1,6 @@
 package cc.sfclub.packy.repo.pkg;
 
-import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.repo.data.local.AbstractPackageInfo;
 import cc.sfclub.packy.session.OperationSession;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
@@ -13,16 +13,16 @@ public interface IPackageManager {
 
     boolean install(OperationSession session);
 
-    List<PackageInfo> searchPackages(String kw);
+    List<AbstractPackageInfo> searchPackages(String kw);
 
     boolean removePackage(String pkgName);
 
-    PackageInfo getPackageInfo(String repoName, String pkgName, @Nullable String ver);
+    AbstractPackageInfo getPackageInfo(String repoName, String pkgName, @Nullable String ver);
 
     void cleanCache();
 
-    List<PackageInfo> getInstalledPackages();
+    List<AbstractPackageInfo> getInstalledPackages();
 
-    List<String> getTrackingFiles(PackageInfo pkg);
+    List<String> getTrackingFiles(AbstractPackageInfo pkg);
 
 }

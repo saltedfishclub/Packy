@@ -1,6 +1,6 @@
 package cc.sfclub.packy.session;
 
-import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.repo.data.local.AbstractPackageInfo;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public interface ISender {
      */
     boolean isAvailable();
 
-    void sendPackageList(List<PackageInfo> packages);
+    void sendPackageList(List<AbstractPackageInfo> packages);
 
     void sendProgressBar(String task, int location);
 

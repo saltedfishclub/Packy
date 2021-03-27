@@ -2,7 +2,7 @@ package cc.sfclub.packy.impl.repo.pkg;
 
 import cc.sfclub.packy.provider.IRepoProvider;
 import cc.sfclub.packy.repo.IRepo;
-import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.repo.data.local.AbstractPackageInfo;
 import cc.sfclub.packy.repo.pkg.IPackageManager;
 import cc.sfclub.packy.session.OperationSession;
 import com.dieselpoint.norm.Database;
@@ -32,26 +32,18 @@ public class PackageManagerImpl implements IPackageManager {
     }
 
     @Override
-    public List<PackageInfo> searchPackages(String kw) {
-        List<PackageInfo> info = new ArrayList<>();
+    public List<AbstractPackageInfo> searchPackages(String kw) {
+        List<AbstractPackageInfo> info = new ArrayList<>();
         repos.forEach(e -> info.addAll(e.searchPackages(kw)));
         return info;
     }
 
     @Override
     public boolean removePackage(String pkgName) {
-        List<PackageInfo> infos = searchPackages(pkgName);
-        if (!infos.stream().allMatch(PackageInfo::isLocal)) {
-            return false;
-        }
-        infos.forEach(e -> {
-            //todo
-        });
-        return true;
     }
 
     @Override
-    public PackageInfo getPackageInfo(String repoName, String pkgName, @Nullable String ver) {
+    public AbstractPackageInfo getPackageInfo(String repoName, String pkgName, @Nullable String ver) {
         return repos.stream().filter(e -> e.getName().equals(repoName)).findFirst().orElseThrow(() -> new NullPointerException("Cannot find repo " + repoName)).getPackage(pkgName, ver);
     }
 
@@ -61,12 +53,12 @@ public class PackageManagerImpl implements IPackageManager {
     }
 
     @Override
-    public List<PackageInfo> getInstalledPackages() {
+    public List<AbstractPackageInfo> getInstalledPackages() {
         return null;
     }
 
     @Override
-    public List<String> getTrackingFiles(PackageInfo pkg) {
+    public List<String> getTrackingFiles(AbstractPackageInfo pkg) {
         return null;
     }
 }

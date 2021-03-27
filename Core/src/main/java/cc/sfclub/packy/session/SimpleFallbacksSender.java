@@ -1,6 +1,6 @@
 package cc.sfclub.packy.session;
 
-import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.repo.data.local.AbstractPackageInfo;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class SimpleFallbacksSender implements ISender {
     }
 
     @Override
-    public void sendPackageList(List<PackageInfo> packages) {
+    public void sendPackageList(List<AbstractPackageInfo> packages) {
         if (mainlySender.isAvailable()) {
             mainlySender.sendPackageList(packages);
         } else {

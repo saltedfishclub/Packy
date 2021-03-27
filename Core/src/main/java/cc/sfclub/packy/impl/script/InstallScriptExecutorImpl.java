@@ -2,15 +2,15 @@ package cc.sfclub.packy.impl.script;
 
 import cc.sfclub.packy.Packy;
 import cc.sfclub.packy.repo.data.remote.PackageScript;
-import cc.sfclub.packy.script.InstallScriptExecutor;
 import cc.sfclub.packy.script.ScriptEnv;
+import cc.sfclub.packy.script.ScriptExecutor;
 import cc.sfclub.packy.session.OperationSession;
 import cc.sfclub.packy.util.SafeLevels;
 import cc.sfclub.packy.util.ScriptEval;
 
 import javax.script.ScriptException;
 
-public class InstallScriptExecutorImpl implements InstallScriptExecutor {
+public class InstallScriptExecutorImpl implements ScriptExecutor {
 
     private boolean exec(OperationSession session, PackageScript cmds, String stageName, InstallStage stage) {
         ScriptEnv scriptEnv = session.scriptEnv;
