@@ -11,7 +11,5 @@ import java.util.function.Consumer;
 public interface IDownloader {
     void downloadPackages(OperationSession session, Consumer<Set<TaskResult>> callback);
 
-    TaskResult download(OperationSession session, String repo, String packageName, String version);
-
     void download(String url, Consumer<File> callback);
 }

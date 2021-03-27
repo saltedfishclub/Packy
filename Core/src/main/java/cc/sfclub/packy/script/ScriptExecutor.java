@@ -5,5 +5,5 @@ import org.jetbrains.annotations.ApiStatus;
 
 @ApiStatus.AvailableSince("0.1.0")
 public interface ScriptExecutor {
-    boolean execute(OperationSession session, String script);
+    boolean execute(OperationSession session, String script, ScriptEnv env);
 }

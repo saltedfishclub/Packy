@@ -5,7 +5,6 @@ import cc.sfclub.packy.repo.IRepo;
 import cc.sfclub.packy.repo.data.local.AbstractPackageInfo;
 import cc.sfclub.packy.repo.pkg.IPackageManager;
 import cc.sfclub.packy.session.OperationSession;
-import com.dieselpoint.norm.Database;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import java.util.ServiceLoader;
 public class PackageManagerImpl implements IPackageManager {
     private List<IRepoProvider> providers = new ArrayList<>();
     private List<IRepo> repos = new ArrayList<>();
-    private Database localDb;
 
     public void initProviders() {
         ServiceLoader.load(IRepoProvider.class).forEach(providers::add);

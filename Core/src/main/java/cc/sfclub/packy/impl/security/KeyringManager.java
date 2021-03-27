@@ -1,5 +1,6 @@
 package cc.sfclub.packy.impl.security;
 
+import cc.sfclub.packy.repo.data.local.AbstractDownloadedPackage;
 import cc.sfclub.packy.session.OperationSession;
 import cc.sfclub.packy.util.Hash;
 import lombok.SneakyThrows;
@@ -43,14 +44,17 @@ public class KeyringManager {
         keyring.addPublicKey(pubkey.getBytes(StandardCharsets.US_ASCII));
     }
 
-    public boolean verify(OperationSession session) {
+    public boolean verify(AbstractDownloadedPackage downloadedPackage) {
+        if (downloadedPackage.getSign() == null) {
+            return true;
+        }
         if (keyring == null) {
             System.err.println("Could not initialize KeyringManager, Verifier will always return false.");
             return false;
         }
         try (InputStream is = BouncyGPG.decryptAndVerifyStream().withConfig(keyring)
-                .andRequireSignatureFromAllKeys(session.getInstallingPackage().getGpgAssignee())
-                .fromEncryptedInputStream(Files.newInputStream(session.getInstallingPackage().getGpgSignLoc().toPath(), StandardOpenOption.READ));) {
+                .andRequireSignatureFromAllKeys(downloadedPackage.getSign().getSigner())
+                .fromEncryptedInputStream(Files.newInputStream(downloadedPackage.getSign().getSignature().toPath(), StandardOpenOption.READ));) {
             byte[] buffer = new byte[4096];
             int n;
             while ((n = is.read(buffer)) != -1) {
@@ -61,13 +65,23 @@ public class KeyringManager {
                 // wrong format
                 return false;
             }
-            if (s2[0].equals(session.getInstallingPackage().getFullNameWithVersion()) && s2[1].equals(Hash.toHex(Hash.SHA256.checksum(session.getInstallingPackage().getCacheLoc())))) {
+            if (s2[0].equals(downloadedPackage.getPackageInfo().asExpr()) && s2[1].equals(Hash.toHex(Hash.SHA256.checksum(downloadedPackage.asFile())))) {
                 return true;
             }
         } catch (Throwable t) {
             t.printStackTrace();
-            System.err.println("Failed to verify " + session.getInstallingPackage().getFullName());
+            System.err.println("Failed to verify " + downloadedPackage.getPackageInfo().asExpr());
         }
         return false;
+    }
+
+    /**
+     * Only use that with cached packageinfo
+     *
+     * @param session
+     * @return
+     */
+    public boolean verifyAll(OperationSession session) {
+        return session.getInstallingPackage().stream().anyMatch(e -> !verify(e.getCachedPackage()));
     }
 }

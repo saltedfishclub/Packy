@@ -1,7 +1,6 @@
 package cc.sfclub.packy.downloader;
 
-import cc.sfclub.packy.Packy;
-import cc.sfclub.packy.util.StringConsts;
+import cc.sfclub.packy.repo.data.local.AbstractDownloadedPackage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,17 +12,13 @@ import java.io.File;
 @Getter
 @AllArgsConstructor
 public final class TaskResult {
-    private String repo;
-    private String packageName;
-    private String version;
+    private AbstractDownloadedPackage downloadedPackage;
     @Setter
     private Result result;
 
     public File getFileLocation() {
-        return new File(StringConsts.CACHE_LOCATION_FOTMAT.replaceAll("%cache_dir", Packy.getImpl().getCacheDir())
-                .replaceAll("%repo", repo)
-                .replaceAll("%package", packageName)
-                .replaceAll("%version", version));
+        //todo:
+        return null;
     }
 
     public boolean isSucceed() {

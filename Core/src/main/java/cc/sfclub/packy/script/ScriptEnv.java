@@ -1,9 +1,9 @@
 package cc.sfclub.packy.script;
 
+import cc.sfclub.packy.repo.data.remote.PackageResource;
 import cc.sfclub.packy.session.ISender;
 import org.jetbrains.annotations.ApiStatus;
 
-import java.io.File;
 import java.util.Map;
 
 /**
@@ -16,5 +16,5 @@ public class ScriptEnv {
     public ISender sender;
 
     //todo public String mutable packageName;
-    public Map<String, File> resources;
+    public Map<String, PackageResource> resources;
 }

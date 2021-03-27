@@ -6,7 +6,7 @@ public class I18N {
     ;
 
     public static class Fails {
-        public String Fail_to_Execute = "&cA exception occurred when executing the %s script";
+        public String Fail_to_Execute = "&cA exception occurred when executing the script";
 
     }
 

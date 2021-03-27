@@ -25,4 +25,6 @@ public interface IPackageManager {
 
     List<String> getTrackingFiles(AbstractPackageInfo pkg);
 
+    AbstractPackageInfo parse(String expr);
+
 }

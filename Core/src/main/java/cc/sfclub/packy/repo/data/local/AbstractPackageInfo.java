@@ -1,5 +1,6 @@
 package cc.sfclub.packy.repo.data.local;
 
+import cc.sfclub.packy.downloader.TaskResult;
 import cc.sfclub.packy.repo.IRepo;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
@@ -31,7 +32,13 @@ public interface AbstractPackageInfo {
      *
      * @param callback
      */
-    void download(Consumer<AbstractDownloadedPackage> callback);
+    void download(Consumer<TaskResult> callback);
 
     boolean isSigned();
+
+    boolean isCompatible();
+
+    default String asExpr() {
+        return getRepository() + "/" + getName() + ":" + getVersion();
+    }
 }

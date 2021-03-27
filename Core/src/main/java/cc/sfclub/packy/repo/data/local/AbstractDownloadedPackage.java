@@ -31,10 +31,10 @@ public interface AbstractDownloadedPackage {
     enum InstallScriptType {
         PRE_INSTALL, INSTALL, UNINSTALL
     }
-
+    @Getter
     abstract class Sign {
         protected String signer;
-
+        protected File signature;
         protected abstract boolean isValid();
     }
 
