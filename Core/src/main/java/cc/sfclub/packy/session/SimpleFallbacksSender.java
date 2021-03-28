@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ServiceLoader;
+import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
 public class SimpleFallbacksSender implements ISender {
@@ -57,15 +58,15 @@ public class SimpleFallbacksSender implements ISender {
     }
 
     @Override
-    public boolean waitChoice() {
+    public void waitChoice(Consumer<Choice> callback) {
         if (mainlySender.isAvailable()) {
-            return mainlySender.waitChoice();
+            mainlySender.waitChoice(callback);
         } else {
             Optional<IFallbackSender> sender = fallback.stream().filter(ISender::isAvailable).findFirst();
             if (sender.isPresent()) {
-                return sender.get().waitChoice();
+                sender.get().waitChoice(callback);
             } else {
-                return false; //Always false if no fallback available.
+                callback.accept(Choice.TIMEOUT);
             }
         }
     }

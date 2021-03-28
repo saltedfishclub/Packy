@@ -21,11 +21,6 @@ public interface ISender {
 
     void sendMessage(String message);
 
-    /**
-     * Blocking.
-     *
-     * @return result
-     */
     void waitChoice(Consumer<Choice> callback);
 
     enum Choice {

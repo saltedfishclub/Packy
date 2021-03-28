@@ -1,10 +1,11 @@
 package cc.sfclub.packy.impl;
 
-import cc.sfclub.packy.repo.data.local.PackageInfo;
+import cc.sfclub.packy.repo.data.local.AbstractPackageInfo;
 import cc.sfclub.packy.session.IFallbackSender;
 import com.google.auto.service.AutoService;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 @AutoService(IFallbackSender.class)
 public class ConsoleFallbackSender implements IFallbackSender {
@@ -29,7 +30,7 @@ public class ConsoleFallbackSender implements IFallbackSender {
     }
 
     @Override
-    public void sendPackageList(List<PackageInfo> packages) {
+    public void sendPackageList(List<AbstractPackageInfo> packages) {
         System.err.println("Failed to send package list for original sender! Maybe he is offline or else??");
     }
 
@@ -45,8 +46,8 @@ public class ConsoleFallbackSender implements IFallbackSender {
 
 
     @Override
-    public boolean waitChoice() {
+    public void waitChoice(Consumer<Choice> callback) {
         System.err.println("Could not find original sender,choice auto rejected.");
-        return false;
+        callback.accept(Choice.TIMEOUT);
     }
 }

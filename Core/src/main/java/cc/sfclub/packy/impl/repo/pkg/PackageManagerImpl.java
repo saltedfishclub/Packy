@@ -26,7 +26,7 @@ public class PackageManagerImpl implements IPackageManager {
 
     @Override
     public boolean install(OperationSession pkg) {
-        return false;
+        pkg.
     }
 
     @Override
@@ -52,6 +52,11 @@ public class PackageManagerImpl implements IPackageManager {
 
     @Override
     public List<AbstractPackageInfo> getInstalledPackages() {
+        return null;
+    }
+
+    @Override
+    public AbstractPackageInfo parse(String expr) {
         return null;
     }
 
