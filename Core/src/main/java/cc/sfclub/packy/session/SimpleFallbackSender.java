@@ -10,17 +10,17 @@ import java.util.ServiceLoader;
 import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
-public class SimpleFallbacksSender implements ISender {
+public class SimpleFallbackSender implements ISender {
     private final ISender mainlySender;
     @Setter
     private List<IFallbackSender> fallback = new ArrayList<>();
 
-    private SimpleFallbacksSender(ISender mainlySender) {
+    private SimpleFallbackSender(ISender mainlySender) {
         this.mainlySender = mainlySender;
     }
 
-    public static SimpleFallbacksSender of(ISender mainlySender) {
-        SimpleFallbacksSender sfs = new SimpleFallbacksSender(mainlySender);
+    public static SimpleFallbackSender of(ISender mainlySender) {
+        SimpleFallbackSender sfs = new SimpleFallbackSender(mainlySender);
         ServiceLoader.load(IFallbackSender.class).iterator().forEachRemaining(sfs.fallback::add);
         return sfs;
     }
