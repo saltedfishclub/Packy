@@ -1,5 +1,7 @@
 package cc.sfclub.packy;
 
+import cc.sfclub.packy.dal.ICacheProvider;
+import cc.sfclub.packy.dal.IFileTracker;
 import cc.sfclub.packy.downloader.IDownloader;
 import cc.sfclub.packy.repo.IRepo;
 import cc.sfclub.packy.repo.pkg.IPackageManager;
@@ -19,8 +21,6 @@ public interface Packy {
 
     I18N getI18N();
 
-    String getCacheDir();
-
     void loadConfig();
 
     IValidator getValidator();
@@ -35,5 +35,11 @@ public interface Packy {
 
     IPackageManager getPackageManager();
 
-    MinecraftUtil getMinecraftUtil();
+    MinecraftUtil getMinecraftUtil();//todo decoupling
+
+    IFileTracker getFileTracker();
+
+    ICacheProvider getCache();
+
+    Config getConfig();
 }
