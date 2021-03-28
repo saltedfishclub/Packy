@@ -17,6 +17,6 @@ public final class FileOperation {
     private long time = System.currentTimeMillis();
 
     public enum Operation {
-        READ, WHITE, DELETE
+        READ, WHITE, DELETE, WHITE_NEW
     }
 }
