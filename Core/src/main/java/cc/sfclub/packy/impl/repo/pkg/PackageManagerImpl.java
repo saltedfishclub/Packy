@@ -55,8 +55,4 @@ public class PackageManagerImpl implements IPackageManager {
         return null;
     }
 
-    @Override
-    public List<String> getTrackingFiles(AbstractPackageInfo pkg) {
-        return null;
-    }
 }
