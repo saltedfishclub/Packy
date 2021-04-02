@@ -23,7 +23,7 @@ public class ConsoleFallbackSender implements IFallbackSender {
         }
         return sb.toString();
     }
-     
+       
     @Override
     public boolean isAvailable() {
         return true;
