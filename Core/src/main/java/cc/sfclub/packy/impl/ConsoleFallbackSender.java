@@ -23,7 +23,7 @@ public class ConsoleFallbackSender implements IFallbackSender {
         }
         return sb.toString();
     }
-
+  
     @Override
     public boolean isAvailable() {
         return true;
@@ -38,7 +38,7 @@ public class ConsoleFallbackSender implements IFallbackSender {
     public void sendProgressBar(String task, int location) {
         System.out.println(task + " " + location * 10 + "% [" + generateProgressbar(location) + "]");
     }
-  
+
     @Override
     public void sendMessage(String message) {
         System.out.println(message);
