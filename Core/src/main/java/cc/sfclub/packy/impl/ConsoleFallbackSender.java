@@ -43,7 +43,7 @@ public class ConsoleFallbackSender implements IFallbackSender {
     public void sendMessage(String message) {
         System.out.println(message);
     }
-
+  
 
     @Override
     public void waitChoice(Consumer<Choice> callback) {
