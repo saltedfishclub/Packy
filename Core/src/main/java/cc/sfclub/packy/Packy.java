@@ -9,7 +9,7 @@ import cc.sfclub.packy.repo.pkg.validator.IValidator;
 import cc.sfclub.packy.script.ScriptExecutor;
 import cc.sfclub.packy.session.OperationSession;
 import cc.sfclub.packy.util.InstanceFinder;
-import cc.sfclub.packy.util.MinecraftUtil;
+import cc.sfclub.packy.util.Platform;
 
 import java.util.Map;
 import java.util.UUID;
@@ -20,8 +20,6 @@ public interface Packy {
     }
 
     I18N getI18N();
-
-    void loadConfig();
 
     IValidator getValidator();
 
@@ -35,7 +33,7 @@ public interface Packy {
 
     IPackageManager getPackageManager();
 
-    MinecraftUtil getMinecraftUtil();//todo decoupling
+    Platform getPlatform();
 
     IFileTracker getFileTracker();
 

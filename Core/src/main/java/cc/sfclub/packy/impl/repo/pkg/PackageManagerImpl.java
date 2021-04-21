@@ -1,22 +1,24 @@
 package cc.sfclub.packy.impl.repo.pkg;
 
+import cc.sfclub.packy.impl.RepoFinder;
 import cc.sfclub.packy.provider.IRepoProvider;
 import cc.sfclub.packy.repo.IRepo;
 import cc.sfclub.packy.repo.data.local.AbstractPackageInfo;
 import cc.sfclub.packy.repo.pkg.IPackageManager;
 import cc.sfclub.packy.session.OperationSession;
+import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ServiceLoader;
 
 public class PackageManagerImpl implements IPackageManager {
     private List<IRepoProvider> providers = new ArrayList<>();
-    private List<IRepo> repos = new ArrayList<>();
+    @Getter
+    private List<IRepo> repos;
 
-    public void initProviders() {
-        ServiceLoader.load(IRepoProvider.class).forEach(providers::add);
+    public PackageManagerImpl() {
+        repos = new ArrayList<>(RepoFinder.findInstance().values());
     }
 
     @Override

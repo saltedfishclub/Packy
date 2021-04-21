@@ -1,52 +1,54 @@
 package cc.sfclub.packy.impl;
 
+import cc.sfclub.packy.Config;
 import cc.sfclub.packy.I18N;
 import cc.sfclub.packy.Packy;
+import cc.sfclub.packy.dal.ICacheProvider;
+import cc.sfclub.packy.dal.IFileTracker;
 import cc.sfclub.packy.downloader.IDownloader;
 import cc.sfclub.packy.impl.downloader.DownloaderImpl;
+import cc.sfclub.packy.impl.repo.pkg.PackageManagerImpl;
+import cc.sfclub.packy.impl.repo.pkg.validator.GPGValidatorImpl;
+import cc.sfclub.packy.impl.script.ScriptExecutorImpl;
 import cc.sfclub.packy.repo.IRepo;
 import cc.sfclub.packy.repo.pkg.IPackageManager;
-import cc.sfclub.packy.repo.pkg.Installer;
 import cc.sfclub.packy.repo.pkg.validator.IValidator;
 import cc.sfclub.packy.script.ScriptExecutor;
 import cc.sfclub.packy.session.OperationSession;
 import cc.sfclub.packy.util.ConfigConsts;
-import cc.sfclub.packy.util.MinecraftUtil;
-import com.google.auto.service.AutoService;
+import cc.sfclub.packy.util.Platform;
 
 import java.util.Map;
 import java.util.UUID;
 
-@AutoService(Packy.class)
 public class PackyImpl implements Packy {
     private DownloaderImpl downloader;
+    private final Platform platform;
+    private final ICacheProvider cache;
+    private final ScriptExecutor scriptExecutor;
+    private final IValidator validator;
+    private final IPackageManager packageManager;
+    private final Config config;
+    private I18N i18n;
 
-    public PackyImpl() {
+    public PackyImpl(Platform platform, ICacheProvider cache, I18N i18n, Config config) {
+        this.platform = platform;
+        this.cache = cache;
+        this.i18n = i18n;
+        this.config = config;
+        scriptExecutor = new ScriptExecutorImpl();
+        validator = new GPGValidatorImpl();
+        packageManager = new PackageManagerImpl();
     }
 
     @Override
     public I18N getI18N() {
-        return null;
-    }
-
-    @Override
-    public String getCacheDir() {
-        return null;
-    }
-
-    @Override
-    public void loadConfig() {
-
-    }
-
-    @Override
-    public Installer getInstaller() {
-        return null;
+        return i18n;
     }
 
     @Override
     public IValidator getValidator() {
-        return null;
+        return validator;
     }
 
     @Override
@@ -59,12 +61,12 @@ public class PackyImpl implements Packy {
 
     @Override
     public ScriptExecutor getScriptExecutor() {
-        return null;
+        return scriptExecutor;
     }
 
     @Override
     public Map<String, IRepo> getRepos() {
-        return null;
+        return RepoFinder.findInstance();
     }
 
     @Override
@@ -74,11 +76,26 @@ public class PackyImpl implements Packy {
 
     @Override
     public IPackageManager getPackageManager() {
+        return packageManager;
+    }
+
+    @Override
+    public Platform getPlatform() {
+        return platform;
+    }
+
+    @Override
+    public IFileTracker getFileTracker() {
         return null;
     }
 
     @Override
-    public MinecraftUtil getMinecraftUtil() {
-        return null;
+    public ICacheProvider getCache() {
+        return cache;
+    }
+
+    @Override
+    public Config getConfig() {
+        return config;
     }
 }

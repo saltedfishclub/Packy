@@ -1,6 +1,7 @@
 package cc.sfclub.packy.util;
 
 import cc.sfclub.packy.Packy;
+import cc.sfclub.packy.provider.PackyProvider;
 
 import java.util.ServiceLoader;
 
@@ -9,9 +10,10 @@ public class InstanceFinder {
 
     public synchronized static Packy findInstance() {
         if (cachedMCPkg == null) {
-            for (Packy mpkg : ServiceLoader.load(Packy.class)) {
-                cachedMCPkg = mpkg;
-                return mpkg;
+            for (PackyProvider mpkg : ServiceLoader.load(PackyProvider.class)) {
+                mpkg.init();
+                cachedMCPkg = mpkg.get();
+                return cachedMCPkg;
             }
         }
         return cachedMCPkg;
