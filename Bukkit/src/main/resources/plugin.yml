@@ -1,5 +1,0 @@
-name: Packy
-version: @version@
-main: org.serverct.mcpkg.BukkitAdaptor
-softdepend: [GsonCPFix]
-description: Minecraft Plugin Manager
