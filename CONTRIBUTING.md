@@ -1,6 +1,6 @@
-# 向 MCPkg 展现你的才干
+# 向 Packy 展现你的才干
 
-Fork ，Commit，Push，PR 一步走，但我们需要先约定好一些东西。
+Fork ，建立自己的分支，Commit，Push，PR 一步走，但我们需要先约定好一些东西。
 
 ## 代码规范
 
