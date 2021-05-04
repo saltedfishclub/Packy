@@ -1,1 +1,8 @@
 rootProject.name = 'Packy'
+include 'repo-api'
+include 'storage-api'
+include 'installer-api'
+include 'validator-api'
+include 'downloader-api'
+include 'ui-command'
+
