@@ -14,3 +14,6 @@ Fork ，建立自己的分支，Commit，Push，PR 一步走，但我们需要�
 
 - 版本号命名规范  
   https://semver.org/lang/zh-CN/
+  
+- 关闭 Issue 时
+  除非特殊原因，关闭 issue 时*必须附上*相关的 commithash 且在相关 commit 内提及这个 issue 的 id.
