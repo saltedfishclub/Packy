@@ -5,4 +5,5 @@ include 'installer-api'
 include 'validator-api'
 include 'downloader-api'
 include 'ui-command'
+include 'platform-api'
 
