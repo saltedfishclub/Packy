@@ -13,6 +13,9 @@ repositories {
 subprojects {
     apply plugin: 'com.github.johnrengelman.shadow'
     afterEvaluate{
+        repositories{
+            maven { url = "https://maven.aliyun.com/repository/central " }
+        }
         dependencies{
             compileOnly 'org.jetbrains:annotations:20.1.0'
             if(!project.name.equals("shared")){
