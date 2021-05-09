@@ -4,4 +4,5 @@ include 'installer-api'
 include 'packy-server-wrapper'
 include 'platform-api'
 include 'packy-api'
+include 'shared'
 

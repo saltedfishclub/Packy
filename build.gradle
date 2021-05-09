@@ -12,6 +12,14 @@ repositories {
 
 subprojects {
     apply plugin: 'com.github.johnrengelman.shadow'
+    afterEvaluate{
+        dependencies{
+            compileOnly 'org.jetbrains:annotations:20.1.0'
+            if(!project.name.equals("shared")){
+                compile project(":shared")
+            }
+        }
+    }
 }
 test {
     useJUnitPlatform()
