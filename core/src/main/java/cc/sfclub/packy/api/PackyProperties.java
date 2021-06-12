@@ -11,7 +11,4 @@ import org.jetbrains.annotations.ApiStatus;
 @Builder
 @Getter
 public class PackyProperties {
-    @Builder.Default
-    private String cacheLocation=System.getProperty("user.home")+"/.cache/packy";
-
 }

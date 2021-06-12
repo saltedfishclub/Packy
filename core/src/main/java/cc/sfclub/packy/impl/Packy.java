@@ -5,6 +5,7 @@ import cc.sfclub.packy.api.PackyProperties;
 import cc.sfclub.packy.api.providers.ICacheProvider;
 import cc.sfclub.packy.api.repo.IRepository;
 import cc.sfclub.packy.api.tracker.ITracker;
+import cc.sfclub.packy.executor.IExecutor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -18,4 +19,5 @@ public class Packy {
     private final ITracker actionTracker;
     private final ICacheProvider cacheManager;
     private final PlatformInfo platform;
+    private final IExecutor executor;
 }
