@@ -1,5 +1,7 @@
 package cc.sfclub.packy.api;
 
+import cc.sfclub.packy.PackagePermission;
+import cc.sfclub.packy.api.repo.IChannel;
 import com.github.zafarkhaja.semver.Version;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -18,6 +20,7 @@ public interface IPackageMeta {
     String description();
     String repository();
     boolean isLocal();
+    PackagePermission getRequestedPermission();
     @Nullable
     List<String> provides();
     @NotNull
@@ -25,4 +28,5 @@ public interface IPackageMeta {
     @NotNull
     List<PackageCoordinate> conflicts();
     Optional<IPackageResource> fetchResource(String id);
+    IChannel from();
 }
