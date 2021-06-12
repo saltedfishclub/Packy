@@ -1,6 +1,6 @@
 package cc.sfclub.packy;
 
-import cc.sfclub.packy.api.cache.ICacheProvider;
+import cc.sfclub.packy.api.providers.ICacheProvider;
 import com.github.zafarkhaja.semver.Version;
 import org.jetbrains.annotations.ApiStatus;
 
