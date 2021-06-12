@@ -8,6 +8,7 @@ Fork ，建立自己的分支，Commit，Push，PR 一步走，但我们需要�
 2. 一个PR做一件事情，不要自己改版本号
 3. 对于所有的公开接口，总是加上 `@ApiStatus.AvailableSince`，新版本添加新的对外公开接口时，总是在方法上标注上 `@ApiStatus.AvailableSince`
 4. 不影响整洁的情况下，总是使用 Optional
+5. 总是避免信息直接写入常量而不是使用Locale
 
 ## 需要注意的地方
 

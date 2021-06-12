@@ -1,8 +1,8 @@
 package cc.sfclub.packy.executor;
 
 import cc.sfclub.packy.PackagePermission;
-import cc.sfclub.packy.api.IPackageMeta;
+import cc.sfclub.packy.api.IPackageVersion;
 
 public interface IExecutor {
-    InstallResult install(IPackageMeta meta, String script, PackagePermission permission);
+    InstallResult install(IPackageVersion meta, String script, PackagePermission permission);
 }
