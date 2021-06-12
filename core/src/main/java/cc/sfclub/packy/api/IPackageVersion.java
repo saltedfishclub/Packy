@@ -15,12 +15,17 @@ import java.util.Optional;
 /**
  * Representing a package in the database.
  */
+//todo refactor.
 @ApiStatus.AvailableSince("0.2.0")
 public interface IPackageVersion {
     String getName();
     Version getVersion();
     String getDescription();
     String getRepository();
+
+    PackageType getType();
+    List<EnvironmentRequirement> getEnv();
+    List<PackageConfiguration> configurations();
     boolean isLocal();
     void setLocal(boolean y);
     PackagePermission getRequestedPermission();
