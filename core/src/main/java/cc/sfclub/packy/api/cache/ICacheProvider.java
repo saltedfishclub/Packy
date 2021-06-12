@@ -12,7 +12,7 @@ import java.util.UUID;
  */
 @ApiStatus.AvailableSince("0.2.0")
 public interface ICacheProvider {
-    Path allocate();
-    Optional<Path> getCacheByID(UUID uuid);
-    Collection<Path> caches();
+    ICache allocate();
+    Optional<ICache> getCacheByID(UUID uuid);
+    Collection<ICache> caches();
 }
