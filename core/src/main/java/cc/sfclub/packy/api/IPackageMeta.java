@@ -3,6 +3,7 @@ package cc.sfclub.packy.api;
 import com.github.zafarkhaja.semver.Version;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface IPackageMeta {
     String description();
     String repository();
     boolean isLocal();
+    @Nullable
+    List<String> provides();
     @NotNull
     List<PackageCoordinate> depends();
     @NotNull
