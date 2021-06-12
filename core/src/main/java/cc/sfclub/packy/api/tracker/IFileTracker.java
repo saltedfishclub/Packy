@@ -1,4 +1,4 @@
-package cc.sfclub.packy.tracker;
+package cc.sfclub.packy.api.tracker;
 
 import org.jetbrains.annotations.ApiStatus;
 

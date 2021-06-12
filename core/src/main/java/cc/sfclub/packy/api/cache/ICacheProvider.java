@@ -1,8 +1,6 @@
-package cc.sfclub.packy.cache;
+package cc.sfclub.packy.api.cache;
 
-import cc.sfclub.packy.util.Pair;
 import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.Collection;

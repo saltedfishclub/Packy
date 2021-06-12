@@ -1,4 +1,4 @@
-package cc.sfclub.packy;
+package cc.sfclub.packy.api;
 
 import com.github.zafarkhaja.semver.Version;
 import lombok.AllArgsConstructor;
