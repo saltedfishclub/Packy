@@ -1,6 +1,6 @@
 package cc.sfclub.packy.api;
 
-import cc.sfclub.packy.IPackageResourceMeta;
+import cc.sfclub.packy.PackageResourceMeta;
 import cc.sfclub.packy.PackagePermission;
 import cc.sfclub.packy.api.repo.IChannel;
 import com.github.zafarkhaja.semver.Version;
@@ -31,7 +31,7 @@ public interface IPackageVersion {
     @NotNull
     List<PackageCoordinate> getConflicts();
     Optional<IPackageResource> fetchResource(String id);
-    Map<String, IPackageResourceMeta> getResources();
+    Map<String, PackageResourceMeta> getResources();
     String getFixer();
     String getAgreement();
     String getInstaller();

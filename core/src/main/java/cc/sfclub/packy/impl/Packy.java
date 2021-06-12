@@ -1,7 +1,11 @@
 package cc.sfclub.packy.impl;
 
 import cc.sfclub.packy.PlatformInfo;
+import cc.sfclub.packy.api.IPackageManager;
+import cc.sfclub.packy.api.Locale;
 import cc.sfclub.packy.api.PackyProperties;
+import cc.sfclub.packy.api.dal.IStorage;
+import cc.sfclub.packy.api.dal.IStorageManager;
 import cc.sfclub.packy.api.providers.ICacheProvider;
 import cc.sfclub.packy.api.repo.IRepository;
 import cc.sfclub.packy.api.tracker.ITracker;
@@ -20,4 +24,11 @@ public class Packy {
     private final ICacheProvider cacheManager;
     private final PlatformInfo platform;
     private final IExecutor executor;
+    private final Locale locale;
+    private final IStorageManager storage;
+    //
+    private IPackageManager packageManager;
+    {
+
+    }
 }

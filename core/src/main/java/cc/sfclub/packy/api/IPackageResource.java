@@ -10,6 +10,7 @@ public interface IPackageResource {
      * path == cache
      */
     Optional<ICache> cache();
+    String name();
     boolean isCached();
     String getResourceID();
 }
