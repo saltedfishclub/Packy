@@ -1,7 +1,7 @@
 package cc.sfclub.packy.api.repo;
 
 import cc.sfclub.packy.PackagePermission;
-import cc.sfclub.packy.api.IPackageMeta;
+import cc.sfclub.packy.api.IPackageVersion;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
@@ -10,9 +10,11 @@ import java.util.List;
  * A Interface where other API fetches data.
  */
 @ApiStatus.AvailableSince("0.2.0")
-public interface IChannel {
+public interface IChannel<T extends IPackageVersion> {
     String name();
     String arch();
-    List<IPackageMeta> fetchFor(String expr);
+    List<T> fetchFor(String expr);
     PackagePermission defaultPackagePermissions();
+    IRepository repository();
+    boolean add(T packageVersion);
 }

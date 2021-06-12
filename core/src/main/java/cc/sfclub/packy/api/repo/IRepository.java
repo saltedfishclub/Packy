@@ -1,6 +1,6 @@
 package cc.sfclub.packy.api.repo;
 
-import cc.sfclub.packy.api.IPackageMeta;
+import cc.sfclub.packy.api.IPackageVersion;
 import cc.sfclub.packy.api.IPackageResource;
 import cc.sfclub.packy.api.PackageCoordinate;
 import org.jetbrains.annotations.ApiStatus;
@@ -16,7 +16,7 @@ public interface IRepository {
     IChannel getRemoteChannel();
     IChannel getLocalChannel();
     Optional<IPackageResource> getResourceByID(String key);
-    Optional<IPackageResource> downloadResource(IPackageMeta meta, String key);
-    Optional<IPackageMeta> fetchPackage(PackageCoordinate packageCoordinate);
-    Optional<IPackageMeta> fetchPackage(String packageCoordinate);
+    Optional<IPackageResource> downloadResource(IPackageVersion meta, String key);
+    Optional<IPackageVersion> fetchPackage(PackageCoordinate packageCoordinate);
+    Optional<IPackageVersion> fetchPackage(String packageCoordinate);
 }
