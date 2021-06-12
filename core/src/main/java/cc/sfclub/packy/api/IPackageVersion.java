@@ -1,5 +1,6 @@
 package cc.sfclub.packy.api;
 
+import cc.sfclub.packy.IPackageResourceMeta;
 import cc.sfclub.packy.PackagePermission;
 import cc.sfclub.packy.api.repo.IChannel;
 import com.github.zafarkhaja.semver.Version;
@@ -8,25 +9,32 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
  * Representing a package in the database.
  */
 @ApiStatus.AvailableSince("0.2.0")
-public interface IPackageMeta {
-    String name();
-    Version version();
-    String description();
-    String repository();
+public interface IPackageVersion {
+    String getName();
+    Version getVersion();
+    String getDescription();
+    String getRepository();
     boolean isLocal();
+    void setLocal(boolean y);
     PackagePermission getRequestedPermission();
     @Nullable
-    List<String> provides();
+    List<String> getProvides();
     @NotNull
-    List<PackageCoordinate> depends();
+    List<PackageCoordinate> getDepends();
     @NotNull
-    List<PackageCoordinate> conflicts();
+    List<PackageCoordinate> getConflicts();
     Optional<IPackageResource> fetchResource(String id);
+    Map<String, IPackageResourceMeta> getResources();
+    String getFixer();
+    String getAgreement();
+    String getInstaller();
+    String getUninstaller();
     IChannel from();
 }

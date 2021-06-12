@@ -1,6 +1,6 @@
 package cc.sfclub.packy.api.tracker;
 
-import cc.sfclub.packy.api.IPackageMeta;
+import cc.sfclub.packy.api.IPackageVersion;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -9,5 +9,5 @@ import org.jetbrains.annotations.ApiStatus;
  */
 @ApiStatus.AvailableSince("0.2.0")
 public interface ITracker {
-    void record(IPackageMeta meta,String action);
+    void record(IPackageVersion meta, String action);
 }

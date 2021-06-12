@@ -8,6 +8,6 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class DependencyCheckResult {
-    private final List<IPackageMeta> conflicts;
-    private final List<IPackageMeta> missingDeps;
+    private final List<IPackageVersion> conflicts;
+    private final List<IPackageVersion> missingDeps;
 }
