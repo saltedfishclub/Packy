@@ -2,35 +2,32 @@ package cc.sfclub.packy;
 
 import cc.sfclub.packy.api.providers.ICacheProvider;
 import com.github.zafarkhaja.semver.Version;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
  * Represents some api depends on platforms.
  */
 @ApiStatus.AvailableSince("0.2.0")
-public interface IPlatform{
+@Getter
+@AllArgsConstructor
+public class PlatformInfo {
     /**
      *
      * @return Platform Semantic Version
      */
-    Version getVersion();
-
-    /**
-     *
-     * @return Platform-provided Cache provider
-     */
-    ICacheProvider getCacheProvider();
-
+    private final Version version;
     /**
      *
      * @return Platform's name
      */
-    String getName();
+    private final String name;
 
     /**
      * lowercase always
      * @return Architecture of the platform
      */
-    String getArch();
-    //todo other DSL things
+     private final String arch;
 }

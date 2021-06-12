@@ -1,5 +1,6 @@
 package cc.sfclub.packy.impl;
 
+import cc.sfclub.packy.PlatformInfo;
 import cc.sfclub.packy.api.PackyProperties;
 import cc.sfclub.packy.api.providers.ICacheProvider;
 import cc.sfclub.packy.api.repo.IRepository;
@@ -16,4 +17,5 @@ public class Packy {
     private final List<IRepository> repositories;
     private final ITracker actionTracker;
     private final ICacheProvider cacheManager;
+    private final PlatformInfo platform;
 }
