@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Representing a package in the database.
@@ -23,4 +24,5 @@ public interface IPackageMeta {
     List<PackageCoordinate> depends();
     @NotNull
     List<PackageCoordinate> conflicts();
+    Optional<IPackageResource> fetchResource(String id);
 }

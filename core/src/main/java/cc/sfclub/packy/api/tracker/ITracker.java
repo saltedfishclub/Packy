@@ -1,5 +1,6 @@
 package cc.sfclub.packy.api.tracker;
 
+import cc.sfclub.packy.api.IPackageMeta;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -7,6 +8,6 @@ import org.jetbrains.annotations.ApiStatus;
  * It's used to debug and find malware codes.
  */
 @ApiStatus.AvailableSince("0.2.0")
-public interface IFileTracker {
-    //todo Designation depends on Packy DSL
+public interface ITracker {
+    void record(IPackageMeta meta,String action);
 }
