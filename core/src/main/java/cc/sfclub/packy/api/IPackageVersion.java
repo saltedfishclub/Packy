@@ -25,7 +25,7 @@ public interface IPackageVersion {
 
     PackageType getType();
     List<EnvironmentRequirement> getEnv();
-    List<PackageConfiguration> configurations();
+    List<PackageConfiguration> getConfigurations();
     boolean isLocal();
     void setLocal(boolean y);
     PackagePermission getRequestedPermission();

@@ -2,9 +2,7 @@ package cc.sfclub.packy.impl;
 
 import cc.sfclub.packy.PackageResourceMeta;
 import cc.sfclub.packy.PackagePermission;
-import cc.sfclub.packy.api.IPackageResource;
-import cc.sfclub.packy.api.IPackageVersion;
-import cc.sfclub.packy.api.PackageCoordinate;
+import cc.sfclub.packy.api.*;
 import cc.sfclub.packy.api.repo.IChannel;
 import com.github.zafarkhaja.semver.Version;
 import lombok.Builder;
@@ -32,6 +30,16 @@ public class PackageVersion implements IPackageVersion {
     private String installer;
     private String uninstaller;
     private final IChannel from;
+    private final PackageType type;
+    private EnvironmentRequirement env;
+    private List<PackageConfiguration> configurations;
+
+
+    @Override
+    public void setLocal(boolean y) {
+        local=y;
+    }
+
     @Override
     public Optional<IPackageResource> fetchResource(String id) {
         return Optional.empty();
