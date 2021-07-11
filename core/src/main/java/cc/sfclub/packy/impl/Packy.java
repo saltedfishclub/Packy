@@ -1,10 +1,9 @@
 package cc.sfclub.packy.impl;
 
 import cc.sfclub.packy.PlatformInfo;
-import cc.sfclub.packy.api.IPackageManager;
+import cc.sfclub.packy.api.pkg.IPackageManager;
 import cc.sfclub.packy.api.Locale;
 import cc.sfclub.packy.api.PackyProperties;
-import cc.sfclub.packy.api.dal.IStorage;
 import cc.sfclub.packy.api.dal.IStorageManager;
 import cc.sfclub.packy.api.providers.ICacheProvider;
 import cc.sfclub.packy.api.repo.IRepository;

@@ -1,4 +1,4 @@
-package cc.sfclub.packy.api;
+package cc.sfclub.packy.api.pkg;
 
 import cc.sfclub.packy.api.cache.ICache;
 

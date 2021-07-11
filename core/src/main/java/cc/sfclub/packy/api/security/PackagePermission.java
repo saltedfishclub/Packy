@@ -1,4 +1,4 @@
-package cc.sfclub.packy;
+package cc.sfclub.packy.api.security;
 
 public enum PackagePermission {
     UNTRUST,NORMAL,TRUSTED;

@@ -1,5 +1,7 @@
-package cc.sfclub.packy.api;
+package cc.sfclub.packy.api.pkg;
 
+import cc.sfclub.packy.api.DependencyCheckResult;
+import cc.sfclub.packy.api.PackageCoordinate;
 import cc.sfclub.packy.executor.InstallResult;
 
 import java.util.List;

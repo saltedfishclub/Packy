@@ -1,7 +1,11 @@
-package cc.sfclub.packy.api;
+package cc.sfclub.packy.api.pkg;
 
-import cc.sfclub.packy.PackageResourceMeta;
-import cc.sfclub.packy.PackagePermission;
+import cc.sfclub.packy.api.PackageResourceMeta;
+import cc.sfclub.packy.api.security.PackagePermission;
+import cc.sfclub.packy.api.EnvironmentRequirement;
+import cc.sfclub.packy.api.PackageConfiguration;
+import cc.sfclub.packy.api.PackageCoordinate;
+import cc.sfclub.packy.api.PackageType;
 import cc.sfclub.packy.api.repo.IChannel;
 import com.github.zafarkhaja.semver.Version;
 import org.jetbrains.annotations.ApiStatus;

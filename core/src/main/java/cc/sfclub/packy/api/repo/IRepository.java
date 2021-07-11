@@ -1,7 +1,7 @@
 package cc.sfclub.packy.api.repo;
 
-import cc.sfclub.packy.api.IPackageVersion;
-import cc.sfclub.packy.api.IPackageResource;
+import cc.sfclub.packy.api.pkg.IPackageVersion;
+import cc.sfclub.packy.api.pkg.IPackageResource;
 import cc.sfclub.packy.api.PackageCoordinate;
 import org.jetbrains.annotations.ApiStatus;
 

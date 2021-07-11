@@ -1,4 +1,4 @@
-package cc.sfclub.packy;
+package cc.sfclub.packy.api;
 
 import lombok.Builder;
 import lombok.Getter;

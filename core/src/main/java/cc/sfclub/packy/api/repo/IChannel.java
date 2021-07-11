@@ -1,7 +1,7 @@
 package cc.sfclub.packy.api.repo;
 
-import cc.sfclub.packy.PackagePermission;
-import cc.sfclub.packy.api.IPackageVersion;
+import cc.sfclub.packy.api.security.PackagePermission;
+import cc.sfclub.packy.api.pkg.IPackageVersion;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;

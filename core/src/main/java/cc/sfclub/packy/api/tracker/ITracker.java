@@ -1,6 +1,6 @@
 package cc.sfclub.packy.api.tracker;
 
-import cc.sfclub.packy.api.IPackageVersion;
+import cc.sfclub.packy.api.pkg.IPackageVersion;
 import org.jetbrains.annotations.ApiStatus;
 
 /**

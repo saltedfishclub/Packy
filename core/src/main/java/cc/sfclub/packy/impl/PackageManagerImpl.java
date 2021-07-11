@@ -1,14 +1,12 @@
 package cc.sfclub.packy.impl;
 
 import cc.sfclub.packy.api.DependencyCheckResult;
-import cc.sfclub.packy.api.IPackageManager;
-import cc.sfclub.packy.api.IPackageVersion;
+import cc.sfclub.packy.api.pkg.IPackageManager;
+import cc.sfclub.packy.api.pkg.IPackageVersion;
 import cc.sfclub.packy.api.PackageCoordinate;
 import cc.sfclub.packy.executor.InstallResult;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @RequiredArgsConstructor
