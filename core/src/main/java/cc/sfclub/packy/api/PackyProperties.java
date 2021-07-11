@@ -1,5 +1,6 @@
 package cc.sfclub.packy.api;
 
+import cc.sfclub.packy.api.security.PackagePermission;
 import lombok.Builder;
 import lombok.Getter;
 import org.jetbrains.annotations.ApiStatus;
@@ -9,6 +10,8 @@ import org.jetbrains.annotations.ApiStatus;
  */
 @ApiStatus.AvailableSince("0.2.0")
 @Builder
-@Getter
 public class PackyProperties {
+    public PackagePermission defaultPackagePermission_Install;
+    public PackagePermission defaultPackagePermission_UnInstall;
+    public PackagePermission defaultPackagePermission_Update;
 }

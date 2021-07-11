@@ -9,4 +9,7 @@ import lombok.Getter;
 public class EnvironmentRequirement {
     private String target;
     private String condition; //semver dsl
+    public String toString(){
+        return target+" "+condition;
+    }
 }

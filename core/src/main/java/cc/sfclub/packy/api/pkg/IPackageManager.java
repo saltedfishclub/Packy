@@ -1,15 +1,24 @@
 package cc.sfclub.packy.api.pkg;
 
 import cc.sfclub.packy.api.DependencyCheckResult;
+import cc.sfclub.packy.api.EnvironmentRequirement;
 import cc.sfclub.packy.api.PackageCoordinate;
-import cc.sfclub.packy.executor.InstallResult;
+import cc.sfclub.packy.api.exception.EnvironmentNotCompatible;
+import cc.sfclub.packy.api.exception.PackageConflictException;
+import cc.sfclub.packy.api.exception.PackageNotLocalException;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
 
+/**
+ * This api is mainly for UI.
+ */
+@ApiStatus.AvailableSince("0.2.0")
 public interface IPackageManager {
-    InstallResult install(IPackageVersion info);
-    boolean uninstall(IPackageVersion info);
-    DependencyCheckResult solveDependencies(IPackageVersion info);
+    boolean install(IPackageVersion info) throws PackageConflictException;
+    boolean uninstall(IPackageVersion info) throws PackageNotLocalException;
+    DependencyCheckResult checkDependencies(IPackageVersion info);
     List<IPackageVersion> searchAllRepos(String keywords);
     IPackageVersion searchByCoord(PackageCoordinate coordinate);
+    boolean solveEnvironmentRequirement(EnvironmentRequirement er) throws EnvironmentNotCompatible;
 }

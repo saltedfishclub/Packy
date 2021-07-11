@@ -23,27 +23,48 @@ import java.util.Optional;
 @ApiStatus.AvailableSince("0.2.0")
 public interface IPackageVersion {
     String getName();
+
     Version getVersion();
+
     String getDescription();
+
     String getRepository();
 
     PackageType getType();
+
     List<EnvironmentRequirement> getEnv();
+
     List<PackageConfiguration> getConfigurations();
+
     boolean isLocal();
+
     void setLocal(boolean y);
+
     PackagePermission getRequestedPermission();
+
     @Nullable
     List<String> getProvides();
+
     @NotNull
     List<PackageCoordinate> getDepends();
+
     @NotNull
     List<PackageCoordinate> getConflicts();
+
     Optional<IPackageResource> fetchResource(String id);
+
     Map<String, PackageResourceMeta> getResources();
+
     String getFixer();
+
     String getAgreement();
+
     String getInstaller();
+
     String getUninstaller();
+
     IChannel from();
+    default PackageCoordinate getCoordinate(){
+        return new PackageCoordinate(getRepository(),getName(),getVersion());
+    }
 }
