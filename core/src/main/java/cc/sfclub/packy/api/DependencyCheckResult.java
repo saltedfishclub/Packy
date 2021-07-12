@@ -9,6 +9,6 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class DependencyCheckResult {
-    private final List<IPackageVersion> conflicts;
-    private final List<IPackageVersion> missingDeps;
+    private final List<EnvironmentRequirement> conflicts;
+    private final List<EnvironmentRequirement> missingDeps;
 }

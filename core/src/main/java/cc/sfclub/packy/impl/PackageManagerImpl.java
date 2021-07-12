@@ -8,11 +8,15 @@ import cc.sfclub.packy.api.pkg.IPackageManager;
 import cc.sfclub.packy.api.pkg.IPackageVersion;
 import cc.sfclub.packy.api.PackageCoordinate;
 import cc.sfclub.packy.executor.IEnvResolver;
+import com.github.zafarkhaja.semver.Version;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ServiceLoader;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 public class PackageManagerImpl implements IPackageManager {
@@ -23,10 +27,11 @@ public class PackageManagerImpl implements IPackageManager {
         if (info.isLocal()) {
             throw new PackageAlreadyExists(Collections.singletonList(info));
         }
-        List<IPackageVersion> res = searchAllRepos(info.getName());
-        boolean newerOrExists = searchAllRepos(info.getName()).stream().filter(e -> e.getName().equals(info.getName())).allMatch(e -> e.getVersion().greaterThanOrEqualTo(info.getVersion()));
+        List<IPackageVersion> res = searchAllRepos(info.getName(),true);
+        Stream<IPackageVersion> a = res.stream().filter(e -> e.getName().equals(info.getName())).filter(e->e.getVersion().greaterThanOrEqualTo(info.getVersion()));
+        boolean newerOrExists = a.count()!=0;
         if (newerOrExists) {
-            throw new PackageConflictException(res);
+            throw new PackageConflictException(a.collect(Collectors.toList()),true);
         }
         DependencyCheckResult result = checkDependencies(info);
         if (result.getConflicts().size() != 0) {
@@ -45,8 +50,8 @@ public class PackageManagerImpl implements IPackageManager {
             }
         }
         info.setLocal(true);
-        boolean a = info.from().repository().getLocalChannel().add(info);
-        return a;
+        boolean az = info.from().repository().getLocalChannel().add(info);
+        return az;
     }
 
     @Override
@@ -63,11 +68,39 @@ public class PackageManagerImpl implements IPackageManager {
 
     @Override
     public DependencyCheckResult checkDependencies(IPackageVersion info) {
-        return null;
+        List<EnvironmentRequirement> conflicts = new ArrayList<>();
+        List<EnvironmentRequirement> missing = new ArrayList<>();
+        for (EnvironmentRequirement conflict : info.getConflicts()) {
+            List<IPackageVersion> res = searchAllRepos(conflict.getTarget(),true);
+            for (IPackageVersion re : res) {
+                if(re.getVersion().satisfies(conflict.getCondition())){
+                    conflicts.add(conflict);
+                }
+            }
+        }
+        for (EnvironmentRequirement depend : info.getDepends()) {
+            List<IPackageVersion> res = searchAllRepos(depend.getTarget(),true);
+            if(res.size()==0){
+                missing.add(depend);
+            }else{
+                List<IPackageVersion> a =new ArrayList<>();
+                for (IPackageVersion re : res) {
+                    if(re.getName().equals(depend.getTarget())){
+                        if(re.getVersion().satisfies(depend.getTarget())){
+                            a.add(re);
+                        }
+                    }
+                }
+                if(a.size()==0){
+                    missing.add(depend);
+                }
+            }
+        }
+        return new DependencyCheckResult(conflicts,missing);
     }
 
     @Override
-    public List<IPackageVersion> searchAllRepos(String keywords) {
+    public List<IPackageVersion> searchAllRepos(String keywords,boolean local) {
         return null;
     }
 

@@ -1,5 +1,6 @@
 package cc.sfclub.packy.api.exception;
 
+import cc.sfclub.packy.api.EnvironmentRequirement;
 import cc.sfclub.packy.api.pkg.IPackageVersion;
 
 import java.util.Arrays;
@@ -7,10 +8,21 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class PackageConflictException extends InstallException{
-    public PackageConflictException(List<IPackageVersion> conflicts) {
+    public PackageConflictException(List<EnvironmentRequirement> conflicts) {
         super("Encountered problem with these conflicting packages: "+ asList(conflicts));
     }
-    private static String asList(List<IPackageVersion> v){
+    public PackageConflictException(List<IPackageVersion> v,boolean escaper){
+        super("Encountered problem with this package:"+asList0(v));
+
+    }
+    private static String asList(List<EnvironmentRequirement> v){
+        StringJoiner sj = new StringJoiner("[","]",",");
+        v.forEach(e->
+                sj.add(e.toString())
+        );
+        return sj.toString();
+    }
+    private static String asList0(List<IPackageVersion> v){
         StringJoiner sj = new StringJoiner("[","]",",");
         v.forEach(e->
                 sj.add(e.getCoordinate().toString())

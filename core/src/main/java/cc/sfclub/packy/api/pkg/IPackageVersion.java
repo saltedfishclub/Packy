@@ -46,10 +46,10 @@ public interface IPackageVersion {
     List<String> getProvides();
 
     @NotNull
-    List<PackageCoordinate> getDepends();
+    List<EnvironmentRequirement> getDepends();
 
     @NotNull
-    List<PackageCoordinate> getConflicts();
+    List<EnvironmentRequirement> getConflicts();
 
     Optional<IPackageResource> fetchResource(String id);
 

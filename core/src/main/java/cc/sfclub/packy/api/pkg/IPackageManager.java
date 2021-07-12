@@ -19,7 +19,7 @@ public interface IPackageManager {
     boolean install(IPackageVersion info, InstallEnvironment environment) throws PackageConflictException, EnvironmentNotCompatible;
     boolean uninstall(IPackageVersion info, InstallEnvironment environment) throws PackageNotLocalException;
     DependencyCheckResult checkDependencies(IPackageVersion info);
-    List<IPackageVersion> searchAllRepos(String keywords);
+    List<IPackageVersion> searchAllRepos(String keywords,boolean local);
     IPackageVersion searchByCoord(PackageCoordinate coordinate);
     boolean solveEnvironmentRequirement(EnvironmentRequirement er) throws EnvironmentNotCompatible;
 }
