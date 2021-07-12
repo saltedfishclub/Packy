@@ -7,6 +7,8 @@ import cc.sfclub.packy.api.exception.*;
 import cc.sfclub.packy.api.pkg.IPackageManager;
 import cc.sfclub.packy.api.pkg.IPackageVersion;
 import cc.sfclub.packy.api.PackageCoordinate;
+import cc.sfclub.packy.api.repo.IChannel;
+import cc.sfclub.packy.api.repo.IRepository;
 import cc.sfclub.packy.executor.IEnvResolver;
 import com.github.zafarkhaja.semver.Version;
 import lombok.RequiredArgsConstructor;
@@ -101,12 +103,17 @@ public class PackageManagerImpl implements IPackageManager {
 
     @Override
     public List<IPackageVersion> searchAllRepos(String keywords,boolean local) {
-        return null;
+        List<IPackageVersion> result=new ArrayList<>();
+        for (IRepository repository : packy.getRepositories()) {
+            IChannel<IPackageVersion> channel = local?repository.getLocalChannel(): repository.getRemoteChannel();
+            result.addAll(channel.fetchFor(keywords));
+        }
+        return result;
     }
 
     @Override
     public IPackageVersion searchByCoord(PackageCoordinate coordinate) {
-        return null;
+
     }
 
     @Override

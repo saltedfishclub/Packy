@@ -13,8 +13,8 @@ import java.util.Optional;
 @ApiStatus.AvailableSince("0.2.0")
 public interface IRepository {
     String getName();
-    IChannel getRemoteChannel();
-    IChannel getLocalChannel();
+    IChannel<IPackageVersion> getRemoteChannel();
+    IChannel<IPackageVersion> getLocalChannel();
     Optional<IPackageResource> getResourceByID(String key);
     Optional<IPackageResource> downloadResource(IPackageVersion meta, String key);
     Optional<IPackageVersion> fetchPackage(PackageCoordinate packageCoordinate);
