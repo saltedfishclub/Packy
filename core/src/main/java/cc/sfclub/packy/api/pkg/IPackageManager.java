@@ -15,7 +15,7 @@ import java.util.List;
  */
 @ApiStatus.AvailableSince("0.2.0")
 public interface IPackageManager {
-    boolean install(IPackageVersion info) throws PackageConflictException;
+    boolean install(IPackageVersion info) throws PackageConflictException, EnvironmentNotCompatible;
     boolean uninstall(IPackageVersion info) throws PackageNotLocalException;
     DependencyCheckResult checkDependencies(IPackageVersion info);
     List<IPackageVersion> searchAllRepos(String keywords);
