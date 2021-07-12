@@ -2,6 +2,7 @@ package cc.sfclub.packy.api.pkg;
 
 import cc.sfclub.packy.api.DependencyCheckResult;
 import cc.sfclub.packy.api.EnvironmentRequirement;
+import cc.sfclub.packy.api.InstallEnvironment;
 import cc.sfclub.packy.api.PackageCoordinate;
 import cc.sfclub.packy.api.exception.EnvironmentNotCompatible;
 import cc.sfclub.packy.api.exception.PackageConflictException;
@@ -15,8 +16,8 @@ import java.util.List;
  */
 @ApiStatus.AvailableSince("0.2.0")
 public interface IPackageManager {
-    boolean install(IPackageVersion info) throws PackageConflictException, EnvironmentNotCompatible;
-    boolean uninstall(IPackageVersion info) throws PackageNotLocalException;
+    boolean install(IPackageVersion info, InstallEnvironment environment) throws PackageConflictException, EnvironmentNotCompatible;
+    boolean uninstall(IPackageVersion info, InstallEnvironment environment) throws PackageNotLocalException;
     DependencyCheckResult checkDependencies(IPackageVersion info);
     List<IPackageVersion> searchAllRepos(String keywords);
     IPackageVersion searchByCoord(PackageCoordinate coordinate);

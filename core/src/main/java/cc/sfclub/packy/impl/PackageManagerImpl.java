@@ -2,10 +2,8 @@ package cc.sfclub.packy.impl;
 
 import cc.sfclub.packy.api.DependencyCheckResult;
 import cc.sfclub.packy.api.EnvironmentRequirement;
-import cc.sfclub.packy.api.exception.EnvironmentNotCompatible;
-import cc.sfclub.packy.api.exception.PackageAlreadyExists;
-import cc.sfclub.packy.api.exception.PackageConflictException;
-import cc.sfclub.packy.api.exception.PackageMissing;
+import cc.sfclub.packy.api.InstallEnvironment;
+import cc.sfclub.packy.api.exception.*;
 import cc.sfclub.packy.api.pkg.IPackageManager;
 import cc.sfclub.packy.api.pkg.IPackageVersion;
 import cc.sfclub.packy.api.PackageCoordinate;
@@ -21,7 +19,7 @@ public class PackageManagerImpl implements IPackageManager {
     private final Packy packy;
 
     @Override
-    public boolean install(IPackageVersion info) throws PackageConflictException, EnvironmentNotCompatible {
+    public boolean install(IPackageVersion info, InstallEnvironment env) throws PackageConflictException, EnvironmentNotCompatible {
         if (info.isLocal()) {
             throw new PackageAlreadyExists(Collections.singletonList(info));
         }
@@ -38,7 +36,7 @@ public class PackageManagerImpl implements IPackageManager {
             throw new PackageMissing(result.getMissingDeps());
         }
         if (info.getInstaller() != null) {
-            packy.getExecutor().install(info, info.getInstaller(), packy.getConfig().defaultPackagePermission_Install);
+            packy.getExecutor().install(info, info.getInstaller(), env.getPermission()!=null?env.getPermission():packy.getConfig().defaultPackagePermission_Install);
         }
         boolean compat=info.getEnv().stream().allMatch(this::solveEnvironmentRequirement);
         for (EnvironmentRequirement environmentRequirement : info.getEnv()) {
@@ -52,14 +50,14 @@ public class PackageManagerImpl implements IPackageManager {
     }
 
     @Override
-    public boolean uninstall(IPackageVersion info) {
+    public boolean uninstall(IPackageVersion info,InstallEnvironment env) throws PackageNotLocalException {
         if (!info.isLocal()) {
-            return new InstallResult(packy.getLocale().Package_Should_Be_Local, false);
+            throw new PackageNotLocalException(info.getCoordinate().toString());
         }
         if (info.getUninstaller() != null) {
-            return
+            return packy.getExecutor().install(info,info.getUninstaller(),env.getPermission()==null?packy.getConfig().defaultPackagePermission_UnInstall:env.getPermission());
         } else {
-
+            return false;
         }
     }
 
