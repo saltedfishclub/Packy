@@ -6,6 +6,6 @@ import java.util.List;
 
 public class PackageAlreadyExists extends PackageConflictException{
     public PackageAlreadyExists(List<IPackageVersion> conflicts) {
-        super(conflicts);
+        super(conflicts,true);
     }
 }

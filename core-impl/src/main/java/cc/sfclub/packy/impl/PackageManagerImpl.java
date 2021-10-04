@@ -9,7 +9,7 @@ import cc.sfclub.packy.api.pkg.IPackageVersion;
 import cc.sfclub.packy.api.PackageCoordinate;
 import cc.sfclub.packy.api.repo.IChannel;
 import cc.sfclub.packy.api.repo.IRepository;
-import cc.sfclub.packy.executor.IEnvResolver;
+import cc.sfclub.packy.api.multiplatform.IEnvResolver;
 import com.github.zafarkhaja.semver.Version;
 import lombok.RequiredArgsConstructor;
 
@@ -113,7 +113,7 @@ public class PackageManagerImpl implements IPackageManager {
 
     @Override
     public IPackageVersion searchByCoord(PackageCoordinate coordinate) {
-
+        return null;
     }
 
     @Override

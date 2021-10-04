@@ -1,6 +1,5 @@
-package cc.sfclub.packy;
+package cc.sfclub.packy.api.multiplatform;
 
-import cc.sfclub.packy.api.providers.ICacheProvider;
 import com.github.zafarkhaja.semver.Version;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,22 +1,24 @@
-# 向 Packy 展现你的才干
+# Contributing to packy
 
-Fork ，建立自己的分支，Commit，Push，PR 一步走，但我们需要先约定好一些东西。
+Fork, checkout to your own branch, commit, push, feeling easy and then PR.  
+But there're some **promises** which should be mentioned
 
-## 代码规范
+## Code Conduct
 
-1. 类名使用 Pascal 命名法，即接口以`I`开头，抽象类尽可能用`Abstract`开头(这貌似不是pascal规定的)，其余部分准寻Google代码规范
-2. 一个PR做一件事情，不要自己改版本号
-3. 对于所有的公开接口，总是加上 `@ApiStatus.AvailableSince`，新版本添加新的对外公开接口时，总是在方法上标注上 `@ApiStatus.AvailableSince`
-4. 不影响整洁的情况下，总是使用 Optional
-5. 总是避免信息直接写入常量而不是使用Locale
+1. *Always* use `Pascal Style` for class naming. `interface` starts with `I`, `abstract class` starts with `Abstract`
+2. Google's Code Guideline
+3. One PR for one thing, submit more PRs if you want to do more things.
+4. **Always** annotate *ALL* public APIs with `@ApiStatus.AvaiilableSince("ver")`
+5. **Always** Using `Optional` certainly. 
+6. **Always** use `Locale`
 
-## 需要注意的地方
+## Others
 
-- 有问题  
-  请发 Issue。您的 Issue 会被自动转发到 Server-CT 组群
+- Found a Issue  
+  [Submit first](https://github.com/saltedfishclub/Packy/issues/new/choose)
 
-- 版本号命名规范  
+- Versioning  
   https://semver.org/lang/zh-CN/
   
-- 关闭 Issue 时
-  除非特殊原因，关闭 issue 时*必须附上*相关的 commithash 且在相关 commit 内提及这个 issue 的 id.
+- When closing Issue
+  **Always** leave a `commithash` of the "solution commit" which also referred to that commit.  

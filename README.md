@@ -1,9 +1,7 @@
 # Packy
-(原名：MCPkg）   
-强大，灵活的包管理器。  
-重构中
+Lightweight, Fast, Easy to use, From community, to community.
 
-[贡献代码指南](./CONTRIBUTING.md) | [加入讨论群组: 991275096](https://jq.qq.com/?_wv=1027&k=wQu1waPr)
+[About Contribution](./CONTRIBUTING.md) | [QQ Group: 991275096](https://jq.qq.com/?_wv=1027&k=wQu1waPr)
 
 # Build
 1. Clone sources

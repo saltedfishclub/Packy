@@ -1,4 +1,4 @@
-package cc.sfclub.packy.executor;
+package cc.sfclub.packy.api.multiplatform;
 
 import cc.sfclub.packy.api.EnvironmentRequirement;
 import org.jetbrains.annotations.ApiStatus;

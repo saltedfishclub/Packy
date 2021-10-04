@@ -24,8 +24,8 @@ public class PackageVersion implements IPackageVersion {
     private boolean local;
     private PackagePermission requestedPermission;
     private List<String> provides;
-    private List<PackageCoordinate> depends;
-    private List<PackageCoordinate> conflicts;
+    private List<EnvironmentRequirement> depends;
+    private List<EnvironmentRequirement> conflicts;
     private Map<String, PackageResourceMeta> resources;
     private String fixer;
     private String agreement;
@@ -33,7 +33,7 @@ public class PackageVersion implements IPackageVersion {
     private String uninstaller;
     private final IChannel from;
     private final PackageType type;
-    private EnvironmentRequirement env;
+    private List<EnvironmentRequirement> env;
     private List<PackageConfiguration> configurations;
 
 

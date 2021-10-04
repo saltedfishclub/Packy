@@ -1,4 +1,4 @@
-package cc.sfclub.packy.executor;
+package cc.sfclub.packy.api.multiplatform;
 
 import cc.sfclub.packy.api.security.PackagePermission;
 import cc.sfclub.packy.api.pkg.IPackageVersion;
