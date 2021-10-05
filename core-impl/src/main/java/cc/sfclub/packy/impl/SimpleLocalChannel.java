@@ -14,7 +14,7 @@ public class SimpleLocalChannel<T extends IPackageVersion> implements IChannel {
     private IRepository repository;
     private String channelName;
     private String arch;
-    private Packy packy;
+    private PackyImpl packy;
     private Class<T> classOfT;
     private PackagePermission defaultPkgPerm;
     @Override

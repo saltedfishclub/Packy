@@ -1,5 +1,6 @@
 package cc.sfclub.packy.impl;
 
+import cc.sfclub.packy.api.IPacky;
 import cc.sfclub.packy.api.multiplatform.PlatformInfo;
 import cc.sfclub.packy.api.pkg.IPackageManager;
 import cc.sfclub.packy.api.Locale;
@@ -16,12 +17,12 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class Packy {
+public class PackyImpl implements IPacky {
     private final PackyProperties config;
     private final List<IRepository> repositories;
     private final ITracker actionTracker;
     private final ICacheProvider cacheManager;
-    private final PlatformInfo platform;
+    private final PlatformInfo platformInfo;
     private final IExecutor executor;
     private final Locale locale;
     private final IStorageManager storage;

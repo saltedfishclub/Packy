@@ -10,7 +10,6 @@ import cc.sfclub.packy.api.PackageCoordinate;
 import cc.sfclub.packy.api.repo.IChannel;
 import cc.sfclub.packy.api.repo.IRepository;
 import cc.sfclub.packy.api.multiplatform.IEnvResolver;
-import com.github.zafarkhaja.semver.Version;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 public class PackageManagerImpl implements IPackageManager {
-    private final Packy packy;
+    private final PackyImpl packy;
 
     @Override
     public boolean install(IPackageVersion info, InstallEnvironment env) throws PackageConflictException, EnvironmentNotCompatible {
