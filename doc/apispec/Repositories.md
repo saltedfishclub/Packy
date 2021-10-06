@@ -101,7 +101,7 @@ Easier than before.
 Similarly with `deps` but these are optional and will install earlier than this package in the same install request.
 
 3. `configurations`
-Sometimes we'll need some parameters from user input, that's it, and which could used in the installer script
+Sometimes we'll need some parameters from user input, that's it, and which could used in the installer script  
 `override` means it would be a global parameter for these installers, be careful to use it.
 
 4. `conflicts`
@@ -119,5 +119,5 @@ Although packy doesn't have a limitation for files, we still had some promises.
 - For UnInstaller: `uninstaller.js` (optional but warn)
 - For License: `license.txt` (optional)
 
-About [Extra Scripts](./ExtraScript.md)
+About [Extra Scripts](./ExtraScript.md)  
 About [Installer](./Installer.md)
