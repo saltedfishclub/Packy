@@ -39,3 +39,15 @@ This api will return a GPG pubkey to the Packy Client.
 `GET %channel_root%/pub.asc`
 
 Caching until it expires.
+
+## Channel Info
+`GET %channel_root%/info`
+
+Response:  
+```json
+{
+  "name": "channel_name",
+  "arch": "channel_arch",
+  "maintainer": "iceBear 67 <icebear67@sfclub.cc>"
+}
+```
