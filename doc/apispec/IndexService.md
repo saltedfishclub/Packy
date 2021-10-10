@@ -29,9 +29,9 @@ Response:
 ## Validation
 When Packy was ready to validate downloaded files.  
 
-`GET %channel_root%/%package_name%/%version%/%file_name%.sig`  
+`GET %channel_root%/%package_name%/%version%.asc`  
 
-For `404` or invalid signature: Not Validated.
+For `404` or signature mismatching: Not Validated.
 
 ## GPG PubKey Download
 

@@ -51,11 +51,9 @@ With this completed, we can continue our journey to metadata for versions.
     └── versions
         └── 0.1.0
             ├── MyPlugin.jar
-            ├── myResource.json
-            ├── version.json
-            └── version_meta.sig
+            └── resources.zip
 
-3 directories, 5 files
+3 directories, 3 files
 ```
 
 # Version Metadata
