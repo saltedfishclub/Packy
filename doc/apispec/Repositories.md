@@ -34,10 +34,7 @@ Example:
           "0.1.0"
         ],
         "requirement": [
-          {
-            "env": "java.version",
-            "condition": ">= 8"
-          }
+          "java.version >= 8"
         ]
       }
     ]
