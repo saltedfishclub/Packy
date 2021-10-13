@@ -16,7 +16,7 @@ Example:
 
 ```json
 {
-  "name": "repository name",
+  "name": "package name",
   "maintainers": [
     "icebear67@sfclub.cc"
   ],
@@ -86,6 +86,7 @@ Easier than before.
   "resources": [
     {
       "fileName": "install.js",
+      "source": "@http https://.... or [repo/]pack:version",
       "fileHash": "sha256(data)"
     }
   ]
