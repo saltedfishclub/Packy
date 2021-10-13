@@ -13,9 +13,10 @@ Just host it at some static sites, such as GitHub Pages, Netlify, Vercel, etc.
 All packy implementations need metadata(packy.json) to identify a repository.
 
 Example:
+
 ```json
 {
- "name": "repository name",
+  "name": "repository name",
   "maintainers": [
     "icebear67@sfclub.cc"
   ],
@@ -32,9 +33,12 @@ Example:
         "ver": [
           "0.1.0"
         ],
-        "requirement": {
-          "java": ">= 8"
-        }
+        "requirement": [
+          {
+            "env": "java.version",
+            "condition": ">= 8"
+          }
+        ]
       }
     ]
   }
