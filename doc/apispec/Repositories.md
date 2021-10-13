@@ -29,7 +29,9 @@ Example:
   "channels": {
     "stable": [
       {
-        "ver": "0.1.0",
+        "ver": [
+          "0.1.0"
+        ],
         "requirement": {
           "java": ">= 8"
         }
