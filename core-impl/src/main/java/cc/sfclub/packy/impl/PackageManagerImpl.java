@@ -3,13 +3,13 @@ package cc.sfclub.packy.impl;
 import cc.sfclub.packy.api.DependencyCheckResult;
 import cc.sfclub.packy.api.EnvironmentRequirement;
 import cc.sfclub.packy.api.InstallEnvironment;
+import cc.sfclub.packy.api.PackageCoordinate;
+import cc.sfclub.packy.api.data.repo.IChannel;
+import cc.sfclub.packy.api.data.repo.IRepository;
 import cc.sfclub.packy.api.exception.*;
+import cc.sfclub.packy.api.multiplatform.IEnvResolver;
 import cc.sfclub.packy.api.pkg.IPackageManager;
 import cc.sfclub.packy.api.pkg.IPackageVersion;
-import cc.sfclub.packy.api.PackageCoordinate;
-import cc.sfclub.packy.api.repo.IChannel;
-import cc.sfclub.packy.api.repo.IRepository;
-import cc.sfclub.packy.api.multiplatform.IEnvResolver;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;

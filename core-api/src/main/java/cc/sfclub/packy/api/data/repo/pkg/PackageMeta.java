@@ -1,6 +1,6 @@
-package cc.sfclub.packy.api.repo.pkg;
+package cc.sfclub.packy.api.data.repo.pkg;
 
-import cc.sfclub.packy.api.repo.channel.ChannelMeta;
+import cc.sfclub.packy.api.data.repo.channel.ChannelMeta;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

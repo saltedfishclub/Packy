@@ -1,4 +1,4 @@
-package cc.sfclub.packy.api.repo.pkg.ver;
+package cc.sfclub.packy.api.data.repo.pkg.ver;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

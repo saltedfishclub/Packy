@@ -1,11 +1,10 @@
 package cc.sfclub.packy.impl;
 
 import cc.sfclub.packy.api.PackageResourceMeta;
-import cc.sfclub.packy.api.security.PackagePermission;
-import cc.sfclub.packy.api.*;
+import cc.sfclub.packy.api.data.repo.IChannel;
 import cc.sfclub.packy.api.pkg.IPackageResource;
 import cc.sfclub.packy.api.pkg.IPackageVersion;
-import cc.sfclub.packy.api.repo.IChannel;
+import cc.sfclub.packy.api.security.PackagePermission;
 import com.github.zafarkhaja.semver.Version;
 import lombok.Builder;
 import lombok.Getter;
