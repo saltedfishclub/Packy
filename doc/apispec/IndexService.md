@@ -28,19 +28,11 @@ Response:
 ]
 ```
 
-## Validation
-
-When Packy is ready to validate the downloaded files, this api will return a GPG signature to the Packy Client.
-
-`GET %repo_root%/%package_name%/%version%.asc`
-
-For `404` or signature mismatching: Not Validated.
-
 ## GPG PubKey Download
 
-This api will return a GPG pubkey to the Packy Client.
+This api will return a GPG Keyring.
 
-`GET %repo_root%/pub.asc`
+`GET %repo_root%/pub.kr`
 
 Caching until it expires.
 
