@@ -1,17 +1,19 @@
 # Index Service
 
 ## Download Cache (LRU)
-Packy introduced caches to release server pressure.
-To download a cache db: `GET %channel_root%/cache` (302 Redirect)  
+Packy introduced caches to release server pressure. To download a cache db: `GET %repo_root%/cache` (302 Redirect)
 
-Packy's `LRU Caches` is implemented by several SQLite Databases. [Click here](./LRU_Cache_Structure.md) to get further details.
+Packy's `LRU Caches` is implemented by several SQLite Databases. [Click here](./LRU_Cache_Structure.md) to get further
+details.
 
 ## Search All Repos
-Packy will request Index Service to get uncached packages.  
 
-`GET %channel_root%/search?keyword=....`
+Packy will request Index Service to get uncached packages.
 
-Response:  
+`GET %repo_root%/search?keyword=....`
+
+Response:
+
 ```json
 [
   {
@@ -27,27 +29,31 @@ Response:
 ```
 
 ## Validation
+
 When Packy is ready to validate the downloaded files, this api will return a GPG signature to the Packy Client.
 
-`GET %channel_root%/%package_name%/%version%.asc`  
+`GET %repo_root%/%package_name%/%version%.asc`
 
 For `404` or signature mismatching: Not Validated.
 
 ## GPG PubKey Download
+
 This api will return a GPG pubkey to the Packy Client.
 
-`GET %channel_root%/pub.asc`
+`GET %repo_root%/pub.asc`
 
 Caching until it expires.
 
-## Channel Info
-`GET %channel_root%/info`
+## Repository Info
 
-Response:  
+`GET %repo_root%/info`
+
+Response:
+
 ```json
 {
-  "name": "channel_name",
-  "arch": "channel_arch",
+  "name": "repo_name",
+  "arch": "targeted_arch",
   "maintainer": "iceBear 67 <icebear67@sfclub.cc>"
 }
 ```
