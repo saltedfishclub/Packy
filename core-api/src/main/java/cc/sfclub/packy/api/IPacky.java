@@ -2,6 +2,7 @@ package cc.sfclub.packy.api;
 
 import cc.sfclub.packy.api.model.installer.InstallCondition;
 import cc.sfclub.packy.api.model.repo.pkg.ver.ResLocatorMeta;
+import cc.sfclub.packy.api.storage.LocalStorage;
 import cc.sfclub.packy.internal.InstallConditionSerializer;
 import cc.sfclub.packy.internal.ResLocatorMetaSerializer;
 import cc.sfclub.packy.util.Lazy;
@@ -19,8 +20,10 @@ public interface IPacky {
         return InstFinder.PREPARED_GSON.get();
     }
 
-    // Implements knew that.
+    // Implementations knew that.
     PackyProperties getProperties();
+
+    LocalStorage getLocalStorage();
 
     class InstFinder {
         private static final Lazy<?, IPacky> FINDER = Lazy.by(() -> {
