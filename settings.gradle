@@ -1,5 +1,4 @@
 rootProject.name = 'Packy'
-include 'packy-server-wrapper'
 include 'shared'
 include 'core-api'
 include 'core-impl'
