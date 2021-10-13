@@ -1,4 +1,4 @@
-package cc.sfclub.packy.api.data.repo.pkg;
+package cc.sfclub.packy.api.model.repo.pkg;
 
 public enum PackageType {
     NORMAL, TEMPLATE

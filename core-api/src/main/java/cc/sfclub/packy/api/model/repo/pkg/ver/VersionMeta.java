@@ -1,6 +1,6 @@
-package cc.sfclub.packy.api.data.repo.pkg.ver;
+package cc.sfclub.packy.api.model.repo.pkg.ver;
 
-import cc.sfclub.packy.api.data.installer.InstallCondition;
+import cc.sfclub.packy.api.model.installer.InstallCondition;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import org.jetbrains.annotations.NotNull;

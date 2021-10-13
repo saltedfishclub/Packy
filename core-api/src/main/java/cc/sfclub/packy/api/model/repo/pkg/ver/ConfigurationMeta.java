@@ -1,4 +1,4 @@
-package cc.sfclub.packy.api.data.repo.pkg.ver;
+package cc.sfclub.packy.api.model.repo.pkg.ver;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package cc.sfclub.packy.internal;
 
-import cc.sfclub.packy.api.data.installer.InstallCondition;
+import cc.sfclub.packy.api.model.installer.InstallCondition;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

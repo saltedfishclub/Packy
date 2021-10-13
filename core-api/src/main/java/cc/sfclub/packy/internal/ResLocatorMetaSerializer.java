@@ -1,6 +1,6 @@
 package cc.sfclub.packy.internal;
 
-import cc.sfclub.packy.api.data.repo.pkg.ver.ResLocatorMeta;
+import cc.sfclub.packy.api.model.repo.pkg.ver.ResLocatorMeta;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

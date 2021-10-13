@@ -1,4 +1,4 @@
-package cc.sfclub.packy.api.data.installer;
+package cc.sfclub.packy.api.model.installer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

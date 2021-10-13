@@ -1,6 +1,6 @@
-package cc.sfclub.packy.api.data.repo.channel;
+package cc.sfclub.packy.api.model.repo.channel;
 
-import cc.sfclub.packy.api.data.installer.InstallCondition;
+import cc.sfclub.packy.api.model.installer.InstallCondition;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
