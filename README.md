@@ -2,7 +2,7 @@
 
 Lightweight, Fast, Easy to use, From community, to community.
 
-[About Contribution](./CONTRIBUTING.md) | [QQ Group: 991275096](https://jq.qq.com/?_wv=1027&k=wQu1waPr)
+[About Contribution](./CONTRIBUTING.md) 
 | [Document](./doc/README.md)
 
 # Requirement
