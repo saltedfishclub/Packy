@@ -11,8 +11,7 @@
  * 让服务器插件保持滚动更新 / 更省时间的版本迁移
  * 你需要做的全部只是运行一条来自 `MCPkg` 的命令。
 
-[贡献代码指南](./CONTRIBUTING.md) | [加入讨论群组: 991275096](https://jq.qq.com/?_wv=1027&k=wQu1waPr)
-
+[贡献代码指南](./CONTRIBUTING.md)
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsaltedfishclub%2FPacky.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsaltedfishclub%2FPacky?ref=badge_large)
